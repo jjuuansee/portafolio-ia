@@ -3,3 +3,4 @@ __pycache__/
 .env
 site/
 .DS_Store
+.ven/
