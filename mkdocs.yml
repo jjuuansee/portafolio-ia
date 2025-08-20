@@ -1,8 +1,16 @@
 site_name: "Portfolio"
 theme:
   name: material
-  language: es
-  features:
+  palette:
+    primary: blue
+    accent: orange
+  font:
+    text: Roboto
+    code: Fira Mono
+extra_css:
+  - assets/styles/custom.css
+language: es
+features:
     - navigation.sections
     - navigation.indexes
 plugins:

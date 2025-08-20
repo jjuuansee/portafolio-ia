@@ -4,3 +4,4 @@ __pycache__/
 site/
 .DS_Store
 .ven/
+.Rproj.user
