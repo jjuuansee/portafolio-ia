@@ -1,24 +1,21 @@
-site_name: "Portfolio"
+site_name: "Portfolio IA"
 theme:
   name: material
-  palette:
-    primary: blue
-    accent: orange
-  font:
-    text: Roboto
-    code: Fira Mono
-extra_css:
-  - assets/styles/custom.css
-language: es
-features:
+  language: es
+  features:
     - navigation.sections
     - navigation.indexes
+    - navigation.top
+    - content.code.copy
+extra_css:
+  - assets/styles/custom.css
 plugins:
   - search
   - awesome-pages
   - git-revision-date-localized:
       fallback_to_build_date: true
   - glightbox
+  - tags
 markdown_extensions:
   - admonition
   - attr_list
