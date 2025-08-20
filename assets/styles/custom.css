@@ -1,0 +1,40 @@
+/* Custom styles for your Data Engineering Portfolio */
+
+/* Change background color of the main content */
+.md-main__inner {
+  background-color: #f8fafc;
+}
+
+/* Change sidebar background and text color */
+.md-sidebar {
+  background-color: #263159;
+}
+.md-sidebar__inner, .md-nav__title, .md-nav__link {
+  color: #fff !important;
+}
+
+/* Style headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Montserrat', Arial, sans-serif;
+  color: #263159;
+}
+
+/* Style code blocks */
+pre, code {
+  background: #e6e6e6 !important;
+  color: #263159 !important;
+  font-family: 'Fira Mono', monospace;
+}
+
+/* Style links */
+a {
+  color: #3a86ff;
+}
+a:hover {
+  color: #ffbe0b;
+}
+
+/* Add padding to main content */
+.md-content {
+  padding: 2rem 2rem 2rem 2rem;
+}
