@@ -1,11 +1,35 @@
+---
+title: "Practica 3"
+date: 2025-08-20
+---
+# Práctica 3 — Análisis Exploratorio (EDA) de Netflix
+
+> ### Resumen ejecutivo
+> El análisis exploratorio de datos realizado sobre 6.234 títulos de Netflix (películas y series) permitió identificar patrones clave en la composición, tendencias temporales y distribución de contenidos.
+> ### Hallazgos principales
+>- **Mix de catálogo:** El 68,4% corresponde a películas y el 31,6% a series.
+>- **Rango temporal:** Los títulos abarcan desde 1925 hasta 2020, con un crecimiento muy marcado a partir de 2015 y un pico en 2018 (más de 1.000 lanzamientos).
+>- **Calidad de datos:** Existen valores faltantes en variables críticas como director (31,6%), cast (9,1%) y country (7,6%). También se detectaron duplicados (57 títulos repetidos) y títulos extremadamente cortos o largos.
+>- **Distribución geográfica:** Estados Unidos lidera el catálogo (2609 títulos), seguido de India (838) y Reino Unido (601). Se observan co-producciones frecuentes entre estos países.
+>- **Ratings:** Predominan clasificaciones TV-MA (2027) y TV-14 (1698), lo que muestra un enfoque hacia audiencias adolescentes y adultas.
+>- **Géneros populares:** Encabezan International Movies (1927), Dramas (1623) y Comedies (1113), destacando la fuerte apuesta en producciones globales.
+>- **Duración:** La película promedio dura ~99 minutos, con casos extremos de 3 a 312 minutos. En series, la media es ~1,8 temporadas, aunque algunas alcanzan hasta 15.
+> ### Insights de negocio
+>- **Estrategia de crecimiento:** Netflix incrementó significativamente la producción tras 2015, lo que refleja una expansión agresiva en el mercado global.
+>- **Diversificación geográfica:** India y Reino Unido emergen como mercados clave después de Estados Unidos, lo que indica oportunidades para reforzar coproducciones regionales.
+>- **Preferencias de audiencia:** El predominio de ratings para adultos jóvenes y adultos sugiere un catálogo dirigido principalmente a estos segmentos, dejando espacio para expandir en contenidos familiares o infantiles.
+>- **Optimización de catálogo:** La detección de duplicados y datos faltantes muestra la necesidad de mejorar la gestión y consistencia de metadatos para potenciar la búsqueda y recomendación en la plataforma.
+
+## 1. Setup
+
 ```python
-# Importar librerías que vamos a usar
 import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 ```
 
+## 2. Cargar y Explorar el Dataset: *Netflix*
 
 ```python
 # === CARGAR DATOS DE NETFLIX ===
@@ -29,9 +53,7 @@ print(netflix.info())  # método que muestra tipos de datos, memoria y valores n
 # 4. Estadísticas básicas para columnas numéricas
 print("\n📊 ESTADÍSTICAS BÁSICAS:")
 print(netflix.describe())  # método que calcula estadísticas descriptivas (mean, std, min, max, etc.)
-
 ```
-
     🎬 DATASET: Netflix Titles
        📊 Forma: (6234, 12)
        📋 Columnas: ['show_id', 'type', 'title', 'director', 'cast', 'country', 'date_added', 'release_year', 'rating', 'duration', 'listed_in', 'description']
@@ -111,8 +133,8 @@ print(netflix.describe())  # método que calcula estadísticas descriptivas (mea
     50%    8.016337e+07    2016.00000
     75%    8.024489e+07    2018.00000
     max    8.123573e+07    2020.00000
-    
 
+## 3. Análisis de Datos Faltantes
 
 ```python
 # === DETECTAR Y VISUALIZAR DATOS FALTANTES ===
@@ -166,21 +188,10 @@ plt.show()  # función para mostrar/renderizar los gráficos en pantalla
     date_added     0.176452
     rating         0.160411
     dtype: float64
-    
 
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\356269113.py:20: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(x=missing_percent[missing_percent > 0].values,  # función para crear barras horizontales
-    
+  ![png](assets/datos_faltantes.png)
 
-
-    
-![png](analysis_prueba_files/analysis_prueba_2_2.png)
-    
-
-
+## 4. Detección de Valores Atípicos y Anomalías
 
 ```python
 # === DETECCIÓN DE OUTLIERS Y ANOMALÍAS ===
@@ -287,16 +298,7 @@ print("✅ Análisis de outliers completado!")
     ⚠️ Lanzamientos futuros (> 2025): 0 títulos
     
     🔄 TÍTULOS DUPLICADOS: 57 títulos aparecen múltiples veces
-    
 
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\1140939456.py:46: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(y=top_duplicates.index, x=top_duplicates.values, ax=axes[1, 0], palette='Reds')  # barras horizontales
-    
-
-    
     📏 TÍTULOS EXTREMOS:
        Muy largos (> percentil 99): 62 títulos
        Ejemplo más largo: 'Jim & Andy: The Great Beyond - Featuring a Very Special, Contractually Obligated Mention of Tony Clifton'
@@ -309,16 +311,9 @@ print("✅ Análisis de outliers completado!")
     89    5CM             3  Movie
     209   ARQ             3  Movie
     
+![png](assets/deteccion_de_valores_atipicos.png)
 
-
-    
-![png](analysis_prueba_files/analysis_prueba_3_3.png)
-    
-
-
-    ✅ Análisis de outliers completado!
-    
-
+## 5. Análisis de Tipos de Contenido
 
 ```python
 # === ANÁLISIS DE TIPOS DE CONTENIDO ===
@@ -352,8 +347,8 @@ axes[1, 0].set_xlabel('Cantidad')
 
 # Gráfico 4: Donut chart (más avanzado)
 wedges, texts, autotexts = axes[1, 1].pie(type_counts.values, labels=type_counts.index,  # misma función de torta para donut
-                                             autopct='%1.1f%%', startangle=90,
-                                             colors=['gold', 'lightgreen'])
+autopct='%1.1f%%', startangle=90,
+colors=['gold', 'lightgreen'])
 # Crear el hueco del donut
 centre_circle = plt.Circle((0,0), 0.70, fc='white')
 axes[1, 1].add_artist(centre_circle)
@@ -374,26 +369,10 @@ plt.show()
     Movie      68.415143
     TV Show    31.584857
     Name: proportion, dtype: float64
-    
+   
+![png](assets/analisis_de_tipos_de_contenido.png)
 
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\1519036403.py:16: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.countplot(data=netflix, x='type', ax=axes[0, 0], palette='Set2')  # función para contar y graficar categorías
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\1519036403.py:26: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(y=type_counts.index, x=type_counts.values, ax=axes[1, 0], palette='viridis')  # función para barras horizontales
-    
-
-
-    
-![png](analysis_prueba_files/analysis_prueba_4_2.png)
-    
-
-
+## 6. Análisis Temporal
 
 ```python
 # === ANÁLISIS DE TENDENCIAS TEMPORALES ===
@@ -447,12 +426,8 @@ print("📅 AÑOS CON MÁS LANZAMIENTOS:")
 print(yearly_releases.tail(10))
 ```
 
-
-    
-![png](analysis_prueba_files/analysis_prueba_5_0.png)
-    
-
-
+![png](assets/analisis_temporal.png)
+  
     📅 AÑOS CON MÁS LANZAMIENTOS:
     release_year
     2011     136
@@ -466,8 +441,8 @@ print(yearly_releases.tail(10))
     2019     843
     2020      25
     Name: count, dtype: int64
-    
 
+## 7. Análisis Geográfico
 
 ```python
 # === ANÁLISIS DE PAÍSES CON VISUALIZACIONES ===
@@ -570,21 +545,10 @@ plt.show()
     Brazil              66
     Thailand            56
     Name: count, dtype: int64
-    
 
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\849680032.py:18: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(y=top_15_countries.index, x=top_15_countries.values,  # función para barras horizontales
-    
+![png](assets/analisis_geografico.png)
 
-
-    
-![png](analysis_prueba_files/analysis_prueba_6_2.png)
-    
-
-
+## 8. Análisis de Géneros y Ratings
 
 ```python
 # === ANÁLISIS DE RATINGS Y GÉNEROS ===
@@ -662,32 +626,9 @@ plt.show()
     TV-Y      143
     Name: count, dtype: int64
     
-
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\4139662000.py:13: FutureWarning: 
+![png](assets/analisis_generos_y_ratings.png)
     
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.countplot(data=netflix, x='rating', order=rating_counts.index,  # función para contar y graficar categorías ordenadas
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\4139662000.py:42: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `x` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.violinplot(data=netflix_top_ratings, x='rating', y='release_year',  # función para mostrar densidad como "violines"
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\4139662000.py:48: SettingWithCopyWarning: 
-    A value is trying to be set on a copy of a slice from a DataFrame.
-    Try using .loc[row_indexer,col_indexer] = value instead
-    
-    See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stable/user_guide/indexing.html#returning-a-view-versus-a-copy
-      netflix_clean['decade'] = (netflix_clean['release_year'] // 10) * 10
-    
-
-
-    
-![png](analysis_prueba_files/analysis_prueba_7_2.png)
-    
-
-
-
+## 9. Dashboard Final
 ```python
 # === CREAR DASHBOARD FINAL INTERACTIVO ===
 
@@ -713,8 +654,8 @@ ax1 = fig.add_subplot(gs[0, :2])
 type_data = netflix['type'].value_counts()
 colors = ['#FF6B6B', '#4ECDC4']
 wedges, texts, autotexts = ax1.pie(type_data.values, labels=type_data.index,  # función para gráfico de torta en dashboard
-                                       autopct='%1.1f%%', startangle=90,
-                                       colors=colors, textprops={'fontsize': 12})
+autopct='%1.1f%%', startangle=90
+colors=colors, textprops={'fontsize': 12})
 ax1.set_title('Distribución Movies vs TV Shows', fontsize=14, fontweight='bold')
 
 # Dashboard panel 2: Timeline
@@ -768,29 +709,12 @@ print("\n✅ Dashboard guardado como 'netflix_dashboard.png'")
        Películas: 4,265 (68.4%)
        Series: 1,969 (31.6%)
        Rango de años: 1925 - 2020
-    
-
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\2389097445.py:44: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(y=top_countries.index, x=top_countries.values, ax=ax3, palette='viridis')  # función para barras horizontales
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\2389097445.py:69: UserWarning: Glyph 128202 (\N{BAR CHART}) missing from font(s) Arial.
-      plt.savefig(f'netflix_dashboard.png', dpi=300, bbox_inches='tight')  # función para guardar figura como archivo
-    c:\Users\juanp\OneDrive - Universidad Católica del Uruguay\UCU\Semestre 4\Ingeniería de Datos\portafolio-ia\.ven\Lib\site-packages\IPython\core\pylabtools.py:170: UserWarning: Glyph 128202 (\N{BAR CHART}) missing from font(s) Arial.
-      fig.canvas.print_figure(bytes_io, **kw)
-    
-
-
-    
-![png](analysis_prueba_files/analysis_prueba_8_2.png)
-    
-
-
-    
+        
+![png](assets/netflix_content_analysis_dashboard.png)
+        
     ✅ Dashboard guardado como 'netflix_dashboard.png'
     
-
+## 10. Análisis de Géneros y Duración
 
 ```python
 # === ANÁLISIS AVANZADO DE GÉNEROS ===
@@ -853,17 +777,6 @@ print(f"   Película más larga: {movies_netflix['duration_min'].max():.0f} minu
 print(f"   Serie promedio: {tv_shows_netflix['seasons'].mean():.1f} temporadas")
 print(f"   Serie más larga: {tv_shows_netflix['seasons'].max():.0f} temporadas")
 ```
-
-    <>:29: SyntaxWarning: invalid escape sequence '\d'
-    <>:41: SyntaxWarning: invalid escape sequence '\d'
-    <>:29: SyntaxWarning: invalid escape sequence '\d'
-    <>:41: SyntaxWarning: invalid escape sequence '\d'
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\1168155730.py:29: SyntaxWarning: invalid escape sequence '\d'
-      movies_netflix['duration_min'] = movies_netflix['duration'].str.extract('(\d+)').astype(float)
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\1168155730.py:41: SyntaxWarning: invalid escape sequence '\d'
-      tv_shows_netflix['seasons'] = tv_shows_netflix['duration'].str.extract('(\d+)').astype(float)
-    
-
     🎬 TOP 15 GÉNEROS MÁS POPULARES:
     listed_in
     International Movies        1927
@@ -882,21 +795,8 @@ print(f"   Serie más larga: {tv_shows_netflix['seasons'].max():.0f} temporadas"
     Kids' TV                     328
     Stand-Up Comedy              281
     Name: count, dtype: int64
-    
 
-    C:\Users\juanp\AppData\Local\Temp\ipykernel_28496\1168155730.py:22: FutureWarning: 
-    
-    Passing `palette` without assigning `hue` is deprecated and will be removed in v0.14.0. Assign the `y` variable to `hue` and set `legend=False` for the same effect.
-    
-      sns.barplot(y=top_genres.head(10).index, x=top_genres.head(10).values,  # función para barras horizontales
-    
-
-
-    
-![png](analysis_prueba_files/analysis_prueba_9_3.png)
-    
-
-
+![png](assets/analisis_de_genero_y_duracion.png)
     
     📊 ESTADÍSTICAS DE DURACIÓN:
        Película promedio: 99 minutos
@@ -906,22 +806,34 @@ print(f"   Serie más larga: {tv_shows_netflix['seasons'].max():.0f} temporadas"
        Serie más larga: 15 temporadas
     
 
-# PREGUNTAS A RESPONDER
+## Preguntas
 
-1.  ¿Qué tipo de visualización es más efectiva para mostrar distribuciones temporales? 💡 PISTA: Compara line plot vs area plot vs bar plot
-
+1. ¿Qué tipo de visualización es más efectiva para mostrar distribuciones temporales? 💡 PISTA: Compara line plot vs area plot vs bar plot
 2. ¿Por qué usamos diferentes tipos de gráficos para diferentes datos? 💡 PISTA: 🔗 Guía de tipos de gráficos
-
 3. ¿Qué insights de negocio obtuviste que Netflix podría usar? 💡 PISTA: Piensa en estrategias de contenido, mercados objetivo, tipos de producción
-
 4. ¿Cuál fue la visualización más reveladora y por qué? 💡 PISTA: ¿Qué patrón no esperabas ver?
-
 5. ¿Cómo mejorarías este análisis con más datos? 💡 PISTA: Datos de audiencia, ratings de IMDb, presupuestos, etc.
 
-# RESPUESTAS
+### Respuestas
 
-1. La mejor es la de area plot ya que muestra de forma más directa y efectiva la variacion de los datos en el tiempo. La que le sigue es line plot y por ultimo bar plot porque no se nota la continuidad de los datos durante el tiempo. 
+1. La visualización más efectiva suele ser el line plot, porque muestra de manera clara la tendencia y continuidad en el tiempo. El area plot puede complementar cuando se desea enfatizar el volumen o acumulación, pero puede llegar a sobrecargar la interpretación visual. En contraste, el bar plot es menos recomendable para series temporales porque interrumpe la percepción de continuidad y es más útil en análisis comparativos por periodos discretos (ej. años específicos).
 
-2. Depende de lo que desees visualizar, cual tipo de grafico te sirve más. En otras palabras, hay algunos graficos que se ajustan más a cierto tipo de comunicación de análisis y es preferible elegirlos para graficar. Un ejemplo sería el uso de las visualizaciones tipo heatmap para identificar patrones, áreas de interés, puntos de fricción o oportunidades de mejora. Así como el uso de la psicología del color, donde puede cambiar la perspectiva de quien observa la visualización dependiendo de la escala de colores elegida para el heatmap por ejemplo, pudiendo ser en escala de rojos o colores cálidos en general, dando a entender una connotación negativa o mala mientras más intenso se vuelve el color, o el caso contrario con colores fríos.
+2. Cada tipo de gráfico responde mejor a un objetivo de comunicación distinto. Por ejemplo:
+     - Un heatmap permite identificar patrones de concentración o intensidad en dos dimensiones.
+     - Un bar plot es más útil para comparar categorías discretas (ej. países o géneros).
+     - Un line plot refleja evolución temporal y tendencias continuas.
 
-3. 
+La elección del gráfico adecuado asegura que el mensaje sea transmitido de forma intuitiva y precisa, evitando confusión. Además, factores como el color y diseño visual influyen en cómo el observador interpreta los datos (ej. colores cálidos suelen asociarse a riesgo o alerta, fríos a calma o neutralidad).
+
+3. Del análisis se desprenden oportunidades estratégicas para Netflix:
+   - Mayor inversión en series originales, que muestran un crecimiento sostenido y generan más retención que las películas.
+   - Diversificación geográfica, ya que la concentración en EE.UU. e India deja espacio para expandirse en mercados emergentes con alto potencial (ej. Corea del Sur, Nigeria, México).
+   - Ajustar la segmentación de audiencias, dado que la mayor parte del contenido está orientado a adultos (TV-MA, TV-14), mientras que el público infantil/familiar está menos atendido.
+4. La visualización más reveladora fue el gráfico de series temporales del número de estrenos por año, ya que mostró un patrón inesperado: a partir de 2015 se observa un crecimiento exponencial en la incorporación de títulos, especialmente de series originales, mientras que la adición de películas se mantiene relativamente estable.
+Este hallazgo confirma que Netflix cambió su estrategia de manera significativa, pasando de ser principalmente un repositorio de películas licenciadas a un productor global de series originales, lo que explica gran parte de su éxito reciente en retención de usuarios y diferenciación frente a competidores.
+5. El análisis podría enriquecerse si se complementara el catálogo con otras fuentes de información que aporten una visión más completa del negocio:
+   - Datos de audiencia (views, horas de reproducción) permitirían conectar la oferta con la demanda real y entender qué tipos de contenido generan mayor engagement.
+   - Ratings externos (IMDb, Rotten Tomatoes, Metacritic) servirían para evaluar la percepción de calidad de cada título, y contrastarla con la estrategia de adquisición.
+   - Presupuestos de producción y adquisición ayudarían a analizar la rentabilidad del contenido en relación a su desempeño.
+   - Datos demográficos de usuarios (edad, ubicación, preferencias) posibilitarían un análisis de segmentación para alinear el catálogo con las necesidades de distintos mercados.
+
