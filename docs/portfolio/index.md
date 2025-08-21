@@ -3,13 +3,32 @@ title: "Índice del Portafolio"
 date: 2025-01-01
 ---
 
-# Portafolio
+# Portfolio
 
-Bienvenido a las entradas del portafolio. Utiliza la plantilla para crear nuevas páginas numeradas
-(`01-...`, `02-...`).
+Bienvenido a mi portafolio de *Inteligencia Artificial e Ingeniería de Datos*.  
+Aquí encontrarás ejercicios prácticos y apuntes teóricos que reflejan mi progreso a lo largo del curso.
 
-- Plantilla: [plantilla.md](plantilla.md)
-- Primera entrada: [01-primera-entrada.md](01-primera-entrada.md)
-- Segunda entrada: [02-ciencia-de-datos-para-gente-sociable.md](02-ciencia-de-datos-para-gente-sociable.md)
-- Tercer entrada: [03-eda-netflix.md](exercise/netflix-data/)
+---
 
+## 📂 Secciones
+
+- [Ejercicios](ejercicios/index.md)  
+  Actividades y proyectos prácticos desarrollados durante el semestre.
+
+- [Teoría](teoria/index.md)  
+  Resúmenes, apuntes y reflexiones sobre los conceptos aprendidos.
+
+---
+
+## 📝 Entradas destacadas
+
+- [Plantilla para nuevas entradas](plantilla.md)  
+- [Primera entrada](01-primera-entrada.md)  
+- [Ciencia de datos para gente sociable](02-ciencia-de-datos-para-gente-sociable.md)  
+
+---
+
+## 🔗 Recursos relacionados
+
+- [Acerca de mí](../acerca.md)  
+- [Recursos](../recursos.md)  
