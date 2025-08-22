@@ -10,4 +10,5 @@ El workflow corre y finaliza en verde (build + deploy).
 👉 Último run de Actions: [enlace al workflow](https://github.com/jjuuansee/portafolio-ia/actions)
 
 Sitio publicado y accesible:
+
 👉 URL: https://jjuuansee.github.io/portafolio-ia/
