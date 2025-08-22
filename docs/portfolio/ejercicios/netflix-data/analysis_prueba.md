@@ -54,7 +54,8 @@ print(netflix.info())  # método que muestra tipos de datos, memoria y valores n
 print("\n📊 ESTADÍSTICAS BÁSICAS:")
 print(netflix.describe())  # método que calcula estadísticas descriptivas (mean, std, min, max, etc.)
 ```
-    🎬 DATASET: Netflix Titles
+
+       🎬 DATASET: Netflix Titles
        📊 Forma: (6234, 12)
        📋 Columnas: ['show_id', 'type', 'title', 'director', 'cast', 'country', 'date_added', 'release_year', 'rating', 'duration', 'listed_in', 'description']
     
@@ -133,6 +134,7 @@ print(netflix.describe())  # método que calcula estadísticas descriptivas (mea
     50%    8.016337e+07    2016.00000
     75%    8.024489e+07    2018.00000
     max    8.123573e+07    2020.00000
+
 
 ## 3. Análisis de Datos Faltantes
 
@@ -777,6 +779,7 @@ print(f"   Película más larga: {movies_netflix['duration_min'].max():.0f} minu
 print(f"   Serie promedio: {tv_shows_netflix['seasons'].mean():.1f} temporadas")
 print(f"   Serie más larga: {tv_shows_netflix['seasons'].max():.0f} temporadas")
 ```
+
     🎬 TOP 15 GÉNEROS MÁS POPULARES:
     listed_in
     International Movies        1927
@@ -822,18 +825,20 @@ print(f"   Serie más larga: {tv_shows_netflix['seasons'].max():.0f} temporadas"
      - Un heatmap permite identificar patrones de concentración o intensidad en dos dimensiones.
      - Un bar plot es más útil para comparar categorías discretas (ej. países o géneros).
      - Un line plot refleja evolución temporal y tendencias continuas.
-
-La elección del gráfico adecuado asegura que el mensaje sea transmitido de forma intuitiva y precisa, evitando confusión. Además, factores como el color y diseño visual influyen en cómo el observador interpreta los datos (ej. colores cálidos suelen asociarse a riesgo o alerta, fríos a calma o neutralidad).
+    
+    La elección del gráfico adecuado asegura que el mensaje sea transmitido de forma intuitiva y precisa, evitando confusión. Además, factores como el color y diseño visual influyen en cómo el observador interpreta los datos (ej. colores cálidos suelen asociarse a riesgo o alerta, fríos a calma o neutralidad).
 
 3. Del análisis se desprenden oportunidades estratégicas para Netflix:
-   - Mayor inversión en series originales, que muestran un crecimiento sostenido y generan más retención que las películas.
-   - Diversificación geográfica, ya que la concentración en EE.UU. e India deja espacio para expandirse en mercados emergentes con alto potencial (ej. Corea del Sur, Nigeria, México).
-   - Ajustar la segmentación de audiencias, dado que la mayor parte del contenido está orientado a adultos (TV-MA, TV-14), mientras que el público infantil/familiar está menos atendido.
+      - Mayor inversión en series originales, que muestran un crecimiento sostenido y generan más retención que las películas.
+      - Diversificación geográfica, ya que la concentración en EE.UU. e India deja espacio para expandirse en mercados emergentes con alto potencial (ej. Corea del Sur, Nigeria, México).
+      - Ajustar la segmentación de audiencias, dado que la mayor parte del contenido está orientado a adultos (TV-MA, TV-14), mientras que el público infantil/familiar está menos atendido.
+
 4. La visualización más reveladora fue el gráfico de series temporales del número de estrenos por año, ya que mostró un patrón inesperado: a partir de 2015 se observa un crecimiento exponencial en la incorporación de títulos, especialmente de series originales, mientras que la adición de películas se mantiene relativamente estable.
 Este hallazgo confirma que Netflix cambió su estrategia de manera significativa, pasando de ser principalmente un repositorio de películas licenciadas a un productor global de series originales, lo que explica gran parte de su éxito reciente en retención de usuarios y diferenciación frente a competidores.
+
 5. El análisis podría enriquecerse si se complementara el catálogo con otras fuentes de información que aporten una visión más completa del negocio:
-   - Datos de audiencia (views, horas de reproducción) permitirían conectar la oferta con la demanda real y entender qué tipos de contenido generan mayor engagement.
-   - Ratings externos (IMDb, Rotten Tomatoes, Metacritic) servirían para evaluar la percepción de calidad de cada título, y contrastarla con la estrategia de adquisición.
-   - Presupuestos de producción y adquisición ayudarían a analizar la rentabilidad del contenido en relación a su desempeño.
-   - Datos demográficos de usuarios (edad, ubicación, preferencias) posibilitarían un análisis de segmentación para alinear el catálogo con las necesidades de distintos mercados.
+      - Datos de audiencia (views, horas de reproducción) permitirían conectar la oferta con la demanda real y entender qué tipos de contenido generan mayor engagement.
+      - Ratings externos (IMDb, Rotten Tomatoes, Metacritic) servirían para evaluar la percepción de calidad de cada título, y contrastarla con la estrategia de adquisición
+      - Presupuestos de producción y adquisición ayudarían a analizar la rentabilidad del contenido en relación a su desempeño.
+      - Datos demográficos de usuarios (edad, ubicación, preferencias) posibilitarían un análisis de segmentación para alinear el catálogo con las necesidades de distintos mercados.
 
