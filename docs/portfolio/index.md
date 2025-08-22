@@ -22,13 +22,5 @@ Aquí encontrarás ejercicios prácticos y apuntes teóricos que reflejan mi pro
 
 ## 📝 Entradas destacadas
 
-- [Plantilla para nuevas entradas](plantilla.md)
-- [Primera entrada](01-primera-entrada.md)
-- [Ciencia de datos para gente sociable](02-ciencia-de-datos-para-gente-sociable.md)
 
 ---
-
-## 🔗 Recursos relacionados
-
-- [Acerca de mí](../acerca.md)
-- [Recursos](../recursos.md)
