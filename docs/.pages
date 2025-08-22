@@ -1,8 +1,8 @@
 nav:
   - Inicio: index.md
   - Acerca de mí: acerca.md
-  - Portfolio: portfolio/index.md
-  - Recursos: recursos/index.md
+  - Portfolio: portfolio/
+  - Recursos: recursos/
 
 arrange:
   - index.md
