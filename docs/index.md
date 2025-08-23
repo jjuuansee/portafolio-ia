@@ -17,8 +17,6 @@ El objetivo es documentar mi progreso, reflexiones y resultados de forma ordenad
 
 ---
 
-## 📝 Cómo usar este sitio
-
 !!! tip "Sugerencia"
     Explorá las secciones desde el menú lateral.  
     Cada sección incluye tablas con el estado de avance, links a notebooks/markdowns y notas adicionales.  
