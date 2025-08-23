@@ -1,13 +1,27 @@
 ---
-title: "Portafolio — Inicio"
-date: 2025-01-01
+title: "Inicio"
+date: 2025-08-22
+---
+# ¡Bienvenido/a a mi Portafolio!
+
+Este sitio recopila mis avances, prácticas y resúmenes teóricos en el marco de mi formación en **Ciencia de Datos y Aprendizaje Automático**.  
+El objetivo es documentar mi progreso, reflexiones y resultados de forma ordenada y accesible.
+
 ---
 
-# Portafolio — Inicio
+## 🎯 Objetivos del sitio
 
-Bienvenido al portafolio del curso. Aquí documentarás tu progreso,
-evidencias y reflexiones a lo largo del semestre.
+- Documentar mi **aprendizaje y proyectos**.  
+- Mantener un registro organizado y reutilizable.  
+- Desarrollar **buenas prácticas de documentación** en Markdown + MkDocs Material.  
 
-- Revisa la sección "Acerca de mí" para presentarte.
-- Crea entradas en `Portfolio` usando la plantilla provista.
-- Mantén objetivos, actividades y evidencias claros por entrada.
+---
+
+## 📝 Cómo usar este sitio
+
+!!! tip "Sugerencia"
+    Explorá las secciones desde el menú lateral.  
+    Cada sección incluye tablas con el estado de avance, links a notebooks/markdowns y notas adicionales.  
+
+---
+
