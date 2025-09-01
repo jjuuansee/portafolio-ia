@@ -1,7 +1,8 @@
 nav:
   - Inicio: index.md
   - Acerca de mí: acerca.md
-  - Portfolio: portfolio/
+  - Ingeniería de Datos: ingenieria-de-datos/
+  - Algabo: algabo/
   - Recursos: recursos/
 
 arrange:
