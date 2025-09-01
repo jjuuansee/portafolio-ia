@@ -14,7 +14,9 @@ En esta sección se encuentran los resúmenes y apuntes teóricos correspondient
 | Nº | Tema / Resumen                        | Archivo / Link                            | Estado |
 |---:|----------------------------------------|-------------------------------------------|:------:|
 | 1  | Grafos Ponderados     | [grafos_ponderados.md](01_grafos_ponderados.md)                | ✅     |
-| 2  | Prim's Algorithm             | [prims_algorithm.md](02_prims_algorithm.md) | ✅     || 3  | Kruskal's Algorithm             | [kruskals_algorithm.md](03_kruskals_algorithm.md) | ✅     |4  | DSU             | [dsu.md](04_dsu.md) | ✅     |
+| 2  | Prim's Algorithm             | [prims_algorithm.md](02_prims_algorithm.md) | ✅     |
+| 3  | Kruskal's Algorithm             | [kruskals_algorithm.md](03_kruskals_algorithm.md) | ✅     |
+|4  | DSU             | [dsu.md](04_dsu.md) | ✅     |
 
 
 
