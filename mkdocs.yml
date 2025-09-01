@@ -1,21 +1,56 @@
 site_name: "Portfolio IA"
+repo_name: GitHub
+site_description: "Apuntes y proyectos de Algoritmos y Grafos (IA)"
+
 theme:
   name: material
   language: es
+  icon:
+    repo: fontawesome/brands/github
   features:
     - navigation.sections
-    - navigation.indexes
     - navigation.top
+    - navigation.indexes
     - content.code.copy
+    - content.code.annotate       # tips numerados en bloques de código
+    - content.tooltips
+    - content.tabs.link
+    - toc.follow
+    - search.suggest
+    - search.highlight
+    - navigation.footer
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-night
+        name: Cambiar a oscuro
+    - scheme: slate
+      primary: indigo
+      accent: deep orange
+      toggle:
+        icon: material/weather-sunny
+        name: Cambiar a claro
+  font:
+    text: Inter
+    code: JetBrains Mono
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/tuuser
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/tuuser/
+
 extra_css:
   - assets/styles/custom.css
-plugins:
-  - search
-  - awesome-pages
-  - git-revision-date-localized:
-      fallback_to_build_date: true
-  - glightbox
-  - tags
+
+extra_javascript:
+  - assets/js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
 markdown_extensions:
   - admonition
   - attr_list
@@ -27,11 +62,22 @@ markdown_extensions:
   - pymdownx.superfences
   - pymdownx.highlight
   - pymdownx.emoji
+  - pymdownx.inlinehilite
   - pymdownx.tasklist:
       custom_checkbox: true
+  - pymdownx.keys
+  - pymdownx.tabbed:
+      alternate_style: true
   - pymdownx.arithmatex:
       generic: true
-extra_javascript:
-  - docs/assets/js/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+plugins:
+  - search
+  - awesome-pages
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+  - glightbox
+  - tags
+  # opcionales:
+  # - minify:
+  #     minify_html: true
