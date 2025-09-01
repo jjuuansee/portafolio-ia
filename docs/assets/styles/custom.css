@@ -1,0 +1,46 @@
+/* Ancho de contenido cómodo en pantallas grandes */
+.md-grid {
+  max-width: 1080px;
+}
+
+/* Títulos más “editoriales” */
+.md-typeset h1 { letter-spacing: -0.02em; font-weight: 600; }
+.md-typeset h2, .md-typeset h3 { letter-spacing: -0.01em; }
+
+/* Código: mejor contraste y legibilidad */
+.md-typeset code, .md-typeset pre code {
+  font-size: 0.80rem;
+  line-height: 1.45;
+}
+
+/* Tablas: scroll horizontal en móviles */
+.md-typeset table { display: block; overflow-x: auto; }
+
+/* Listas de tareas más compactas */
+.md-typeset .task-list-item { margin: 0.1rem 0; }
+
+/* MathJax: centra display-math y escala inline un pelín */
+mjx-container[display="true"] {
+  margin: 1rem auto !important;
+}
+mjx-container:not([display="true"]) {
+  font-size: 1.02em;
+}
+
+/* Bloques de admonition más “cards” */
+.md-typeset .admonition,
+.md-typeset details {
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 6%);
+}
+
+/* Links más visibles */
+.md-content a:not(.md-button) {
+  text-underline-offset: 2px;
+}
+
+/* Imagenes con sombra sutil */
+.md-typeset img {
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
+}
