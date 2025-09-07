@@ -15,7 +15,8 @@ Bienvenido/a a la sección de ejercicios. Aquí encontrarás tanto las práctica
 |---:|------------------------------------------------|-----------------------------------------------------|:------:|
 | 1  | Análisis exploratorio de Iris (EDA)            | [iris-eda.ipynb](iris-data/iris-eda.ipynb)          | ⏳     |
 | 2  | Publicación del portafolio                     | [portfolio_creation.md](portfolio-creation/portfolio_creation.md) | ✅     |
-| 3  | Netflix EDA Analysis                           | [analysis_prueba.md](netflix-data/analysis_prueba.md) | ✅     |
+| 3  | Análisis exploratorio de Netflix                           | [analysis_netflix.md](netflix-data/analysis_prueba.md) | ✅     |
+| 4  | Análisis sobre Taxis en NYC                           | [nyc_taxis.md](nyc-taxis/practica_4.md) | ⏳     |
 
 ---
 
