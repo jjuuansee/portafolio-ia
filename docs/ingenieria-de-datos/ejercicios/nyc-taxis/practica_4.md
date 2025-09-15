@@ -1043,4 +1043,5 @@ See <span style="color: #0000ff; text-decoration-color: #0000ff">https://docs.pr
 
 <pre style="white-space:pre;overflow-x:auto;line-height:normal;font-family:Menlo,'DejaVu Sans Mono',consolas,'Courier New',monospace">20:09:19.849 | <span style="color: #d70000; text-decoration-color: #d70000">ERROR</span>   | Task run 'Hacer Join Simple-fd4' - Task run failed with exception: KeyError('pickup_date') - No retries configured for this task.
 
-**En esta parte comenzó a dar errores y me rendí 🫠**
+
+**En esta parte comenzó a dar errores y me rendí 🫠.**
