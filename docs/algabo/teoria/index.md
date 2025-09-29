@@ -13,10 +13,10 @@ En esta sección se encuentran los resúmenes y apuntes teóricos correspondient
 
 | Nº | Tema / Resumen                        | Archivo / Link                            | Estado |
 |---:|----------------------------------------|-------------------------------------------|:------:|
-| 1  | Introducción a ALGABO     | [introducción.md](00_introduction.md)                | ✅     |
-| 2  | Búsqueda no informada             | [búsqueda-no-informada.md](01_busqueda-no-informada.md) | ✅     |
-| 3  | Búsqueda informada             | [búsqueda-informada.md](03_busqueda-informada.md) | ✅     |
-|4  | Held Karp             | [held-karp.md](04_held_karp.md) | ✅     |
+| 1  | Introducción a ALGABO     | [introducción.md](01_introduccion_a_los_algoritmos/00_introduction.md)                | ✅     |
+| 2  | Búsqueda no informada             | [búsqueda-no-informada.md](01_introduccion_a_los_algoritmos/01_busqueda-no-informada.md) | ✅     |
+| 3  | Búsqueda informada             | [búsqueda-informada.md](03_algoritmos_heuristicos/03_busqueda-informada.md) | ✅     |
+|4  | Held Karp             | [held-karp.md](04_programacion_dinamica/04_held_karp.md) | ✅     |
 
 
 
