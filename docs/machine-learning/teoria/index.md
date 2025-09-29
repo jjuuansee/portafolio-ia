@@ -11,12 +11,12 @@ En esta sección se encuentran los resúmenes y apuntes teóricos correspondient
 
 ## 📚 Resúmenes principales
 
-| Nº | Tema / Resumen                        | Archivo / Link                            | Estado |
-|---:|----------------------------------------|-------------------------------------------|:------:|
-| 1  | Introducción a ALGABO     | [introducción.md](00_introduction.md)                | ✅     |
-| 2  | Búsqueda no informada             | [búsqueda-no-informada.md](01_busqueda-no-informada.md) | ✅     |
+| Nº | Tema / Resumen              | Archivo / Link                            | Estado |
+|---:|-----------------------------|-------------------------------------------|:------:|
+| 1  | Redes Neuronales            | [redes_neuronales.md](redes_neuronales.md)|  ✅    |
+<!-- | 2  | Búsqueda no informada             | [búsqueda-no-informada.md](01_busqueda-no-informada.md) | ✅     |
 | 3  | Búsqueda informada             | [búsqueda-informada.md](03_busqueda-informada.md) | ✅     |
-|4  | Held Karp             | [held-karp.md](04_held_karp.md) | ✅     |
+|4  | Held Karp             | [held-karp.md](04_held_karp.md) | ✅     | -->
 
 
 
