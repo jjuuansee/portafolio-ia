@@ -3,6 +3,7 @@ nav:
   - Acerca de mí: acerca.md
   - Ingeniería de Datos: ingenieria-de-datos/
   - Algabo: algabo/
+  - Machine Learning: machine-learning/
   - Recursos: recursos/
 
 arrange:
