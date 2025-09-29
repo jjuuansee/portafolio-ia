@@ -47,11 +47,11 @@ Los métodos basados en gradientes, como el *Backpropagation*, se utilizan gener
 
 ## Red Neuronal multicapa (Multilayer Perceptron, MLP)
 
-En las redes neuronales multicapas la entrada es un vector $X \in \R^p$ y las salidas son $M$ clases (p.ej., 10 para dígitos de 0-9).
+En las redes neuronales multicapas la entrada es un vector $X \in \mathbb{R}^p$ y las salidas son $M$ clases (p.ej., 10 para dígitos de 0-9).
 Se componen de $K_1, K_2, \cdots$ unidades de capas ocultas, y se maneja el sesgo añadiendo un 1 al vector de entrada o activación:
 
-  - $\(\tilde{x} = [1;\, X] \in \mathbb{R}^{p+1}\)$
-  - $\(\tilde{a}^{(1)} = [1;\, a^{(1)}] \in \mathbb{R}^{K_1+1}\)$, etc.
+  - \(\tilde{x} = [1;\, X] \in \mathbb{R}^{p+1}\)
+  - \(\tilde{a}^{(1)} = [1;\, a^{(1)}] \in \mathbb{R}^{K_1+1}\), etc.
 
 **Matrices de pesos (con sesgo incluido en la primera fila):**
 - \(W_1 \in \mathbb{R}^{(p+1)\times K_1}\)
@@ -60,116 +60,14 @@ Se componen de $K_1, K_2, \cdots$ unidades de capas ocultas, y se maneja el sesg
 
 > Convención: usamos vectores **columna** y preactivaciones \(z^{(\ell)}\); \(g(\cdot)\) es la activación (típicamente ReLU, también puede ser sigmoide).
 
----
+En el problema de MNIST se emple una red neuronal multicapa
 
-## 2) Propagación hacia adelante (forward pass)
-### Capa oculta 1
-Preativación y activación (forma matricial):
-\[
-z^{(1)} = W_1^\top \tilde{x}, 
-\quad 
-a^{(1)} = g\!\big(z^{(1)}\big)
-\]
+En este problema debemos identificar un digito escrito a mano e identificar que número del 0-9 es. Por lo tanto, cada imagen de 28x28 se aplana a un vector de 784 números.
 
-Forma componente a componente:
-\[
-A^{(1)}_k 
-= g\!\Big(w^{(1)}_{k0} + \sum_{j=1}^{p} w^{(1)}_{kj} X_j\Big),
-\quad k=1,\dots,K_1
-\]
+Por lo tanto nuestra red tendrá 784 neuronas de entrada que reciben cada valor del pixel del digito a analizar. Entre las dos capas ocultas hay 384 neuronas (Capa 1: 256 neuronas, Capa 2: 128 neuronas). En la salida tenemos 10 neuronas (una por dígito).
 
-### Capa oculta 2
-\[
-z^{(2)} = W_2^\top \tilde{a}^{(1)}, 
-\quad 
-a^{(2)} = g\!\big(z^{(2)}\big)
-\]
-
-Componente a componente:
-\[
-A^{(2)}_\ell 
-= g\!\Big(w^{(2)}_{\ell 0} + \sum_{k=1}^{K_1} w^{(2)}_{\ell k} A^{(1)}_k\Big),
-\quad \ell=1,\dots,K_2
-\]
-
-### Capa de salida (logits)
-\[
-Z = B^\top \tilde{a}^{(2)}
-\quad\Longleftrightarrow\quad
-Z_m = \beta_{m0} + \sum_{\ell=1}^{K_2} \beta_{m\ell} A^{(2)}_\ell,
-\; m=1,\dots,M
-\]
+- **La primer capa oculta** recibe los 784 numeros que representan los pixeles de la imagen, los pesa, suma su sesgo y aplica la activación (suele ser ReLU).
+- **La segunda capa oculta** hace lo mismo pero con las 256 salidas de la capa 1.
+- **La capa de salida** es una mezcla lineal de la capa 2 para obtener 10 puntuaciones, donde se decide que número es el que ve el algoritmo mediante una función que calcula las probabilidades, elegimos la clase con mayor probabilidad.
 
 ---
-
-## 3) Softmax y probabilidades de clase
-\[
-f_m(X) \;=\; \Pr(Y=m\,|\,X) 
-= \frac{e^{Z_m}}{\sum_{r=1}^{M} e^{Z_r}},
-\quad m=1,\dots,M
-\]
-
-**Regla de decisión (clasificador):**
-\[
-\hat{y} \;=\; \arg\max_{m\in\{1,\dots,M\}} f_m(X)
-\]
-
----
-
-## 4) Funciones de pérdida
-### Clasificación multiclase: entropía cruzada
-\[
-\mathcal{L} \;=\; - \sum_{i=1}^{n} \sum_{m=1}^{M} y_{im}\,\log\big(f_m(x_i)\big)
-\]
-donde \(y_{im}\) es codificación one-hot (1 si \(x_i\) pertenece a la clase \(m\), 0 si no).
-
-### Regresión (si la salida es numérica)
-\[
-\mathcal{L} \;=\; \sum_{i=1}^{n} \big(y_i - f(x_i)\big)^2
-\]
-
----
-
-## 5) Regularización (para evitar sobreajuste)
-### Ridge / L2 (esquema típico)
-\[
-\mathcal{L}_{\text{total}} 
-\;=\; \mathcal{L} 
-\;+\; \lambda \Big(\|W_1\|_F^2 + \|W_2\|_F^2 + \|B\|_F^2 \Big)
-\]
-(\(\|\cdot\|_F\): norma de Frobenius; \(\lambda>0\) controla la penalización).
-
-### Dropout (idea)
-Durante el entrenamiento, se “apagan” aleatoriamente unidades (prob. \(p\)) en capas ocultas:
-\[
-a^{(\ell)}_{\text{drop}} 
-\;=\; r^{(\ell)} \odot a^{(\ell)}, 
-\quad r^{(\ell)}_j \sim \text{Bernoulli}(1-p)
-\]
-(en inferencia se usa el vector completo escalado o se emplea “inverted dropout”).
-
----
-
-## 6) Ejemplo típico (MNIST)
-- **Dimensiones:** \(p=784\) (28×28 píxeles), \(K_1=256,\; K_2=128,\; M=10\).
-- **Tamaños de matrices:**
-  - \(W_1 \in \mathbb{R}^{785\times 256}\) (sesgo incluido → 784+1)
-  - \(W_2 \in \mathbb{R}^{257\times 128}\) (sesgo incluido → 256+1)
-  - \(B \in \mathbb{R}^{129\times 10}\) (sesgo incluido → 128+1)
-- **Parámetros totales:** \(785\cdot256 + 257\cdot128 + 129\cdot10 = 235{,}146\).
-
-**Rendimiento ilustrativo en test (MNIST):**
-- Red + **ridge**: 2.3% error
-- Red + **dropout**: **1.8%** error
-- Regresión logística multinomial: 7.2%
-- LDA: 12.7%
-
----
-
-## 7) Activaciones comunes
-- **ReLU:** \(g(z)=\max(0,z)\)
-- **Sigmoide:** \(g(z)=\frac{1}{1+e^{-z}}\)
-
-> Nota: en MLP modernos suele preferirse **ReLU** por eficiencia y estabilidad.
-
-
