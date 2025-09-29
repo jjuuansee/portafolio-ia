@@ -1,6 +1,6 @@
 # Búsqueda informada
 
-La búsqueda informada es un enfoque de búsqueda que utiliza información adicional para realizar búsquedas más eficientes y precisas. A diferencia de la [búsqueda no informada](01_busqueda-no-informada.md), que no utiliza información adicional, la búsqueda informada se basa en heurísticas para guiar el proceso de búsqueda hacia soluciones óptimas.
+La búsqueda informada es un enfoque de búsqueda que utiliza información adicional para realizar búsquedas más eficientes y precisas. A diferencia de la [búsqueda no informada](../01_introduccion_a_los_algoritmos/01_busqueda-no-informada.md), que no utiliza información adicional, la búsqueda informada se basa en heurísticas para guiar el proceso de búsqueda hacia soluciones óptimas.
 
 ---
 
