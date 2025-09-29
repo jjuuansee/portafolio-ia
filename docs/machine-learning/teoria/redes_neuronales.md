@@ -68,6 +68,6 @@ Por lo tanto nuestra red tendrá 784 neuronas de entrada que reciben cada valor 
 
 - **La primer capa oculta** recibe los 784 numeros que representan los pixeles de la imagen, los pesa, suma su sesgo y aplica la activación (suele ser ReLU).
 - **La segunda capa oculta** hace lo mismo pero con las 256 salidas de la capa 1.
-- **La capa de salida** es una mezcla lineal de la capa 2 para obtener 10 puntuaciones, donde se decide que número es el que ve el algoritmo mediante una función que calcula las probabilidades, elegimos la clase con mayor probabilidad.
+- **La capa de salida** es una mezcla lineal de la capa 2 para obtener 10 puntuaciones, donde se decide que número es el que ve el algoritmo mediante una función (softmax) que calcula las probabilidades, elegimos la clase con mayor probabilidad.
 
 ---
