@@ -71,3 +71,66 @@ Por lo tanto nuestra red tendrá 784 neuronas de entrada que reciben cada valor 
 - **La capa de salida** es una mezcla lineal de la capa 2 para obtener 10 puntuaciones, donde se decide que número es el que ve el algoritmo mediante una función (softmax) que calcula las probabilidades, elegimos la clase con mayor probabilidad.
 
 ---
+
+¡Hecho! Aquí tienes **preguntas de respuesta corta** que cubren **redes de una capa y multicapa**, **forward**, **logits**, **ridge** y otras funciones del texto (sigmoide, ReLU, softmax, entropía cruzada, MSE, one-hot). Están pensadas para examen: concretas y directas.
+
+---
+
+#### Preguntas de respuesta corta — Una capa y Multicapa
+ 
+1. ¿Por qué la **no linealidad** de la función de activación es esencial en una red? Da una razón.
+  
+  R: sin $g(\dot)$ no lineal, la red colapsa a un modelo lineal.
+
+2. Compara **sigmoide** y **ReLU**: da una ventaja práctica de ReLU frente a sigmoide.
+  
+  R: es más eficiente de calcular/almacenar; sigmoide fue popular al inicio.
+
+3. Explica con una frase cómo una red de una sola capa puede **modelar interacciones** entre variables de entrada.
+  
+  R: combinando transformaciones no lineales de combinaciones lineales pueden emerger términos de interacción (p.ej., $X_1 \dot X_2$)
+
+4. ¿Qué **función de pérdida** usarías si la salida es **cuantitativa**? Escríbela.
+  
+  R: MSE
+
+5. ¿Qué **función de pérdida** usarías si la salida es **cualitativa multiclase**? Nómbrala.
+  
+  R: entropía cruzada multinomial
+
+6. Da una razón por la que, en la práctica, es **más fácil aprender** con **múltiples capas moderadas** que con una sola capa enorme. 
+
+  R: Varias capas moderadas facilitan encontrar buenas soluciones (mejor aprendizaje que una sola capa gigante)
+
+7. En MNIST, ¿cuántas **entradas** tiene la red y por qué? (di el número y el motivo).
+
+  R: Entradas: $28 \times 28 = 784$ píxeles en escala de grises, vectorizados.
+
+8. ¿Qué es **one-hot encoding** y cómo se usa para las 10 clases de MNIST?
+
+  R:  One-hot: vector $Y = (Y_0,\cdots,Y_9)$ con un 1 en la clase correcta y ceros en las demás. 
+
+9.  Define **bias** en este contexto. ¿Por qué aparece un “+1” en las dimensiones de las matrices de pesos?
+
+  R: Bias: se añade un término constante ⇒ dimensiones con “+1”
+
+10.  ¿Qué son los **logits (Z_m)** en la capa de salida?
+
+  R: Puntajes lineales de las salidas
+
+11. Explica con una frase por qué las activaciones de capas superiores **siguen siendo funciones de X**.
+
+  R: Las activaciones de capas superiores es funcion de $X$ porque es una cadena de transformaciones.
+
+16.  **La funcion de softmax** para convertir logits en **probabilidades**.¿Qué garantiza esta función?
+
+  R: Garantiza no-negatividad y suma 1. 
+
+17.  Explica en una frase cómo actúa **ridge (L2)** y qué busca evitar.
+
+  R: se utiliza para evitar sobreajuste penalizando pesos grandes
+
+18.  Explica en una frase la idea de **dropout** y qué problema intenta mitigar.
+
+  R: se utiliza para evitar el sobreajuste.
+
