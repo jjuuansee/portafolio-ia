@@ -1,6 +1,6 @@
 # Deep Learning
 
-El deep learning es un área de investigación muy activa desde el 210, se basa en redes neuronales, (que habían perdido popularidad con la llegada de métodos como SVM, boosting y random forests) pero resurgieron gracias al mayor poder computacional, diponibilidad de grandes conjuntos de datos y nuevas arquitecturas y algoritmos de entrenamiento.
+El deep learning es un área de investigación muy activa desde el 2010, se basa en redes neuronales, (que habían perdido popularidad con la llegada de métodos como SVM, boosting y random forests) pero resurgieron gracias al mayor poder computacional, diponibilidad de grandes conjuntos de datos y nuevas arquitecturas y algoritmos de entrenamiento.
 
 Esta rama del Machine Learning se basa en el uso de algoritmos para modelar y comprender datos complejos. Estos algoritmos se inspiran en la estructura y función del cerebro humano, utilizando múltiples capas de procesamiento para extraer y transformar información de manera iterativa.
 

@@ -72,7 +72,7 @@ ratings = netflix["rating"].value_counts()
 genres = netflix.dropna(subset=["listed_in"])["listed_in"].str.split(", ").explode().value_counts()
 ```
 
-**Se puede ver el desarrollo del práctico detalladamente [aquí](../netflix-data/analysis_prueba.md)**
+**Se puede ver el desarrollo del práctico detalladamente [aquí](../ut1-netflix-data/analysis_prueba.md)**
 ## 💡 Reflexión
 
 - **Qué aprendí**: a mantener una línea de **trazabilidad de calidad de datos** (faltantes/duplicados/rangos) y a **vincular métricas** (mix, tiempos, países, ratings) con *implicancias de negocio*.  

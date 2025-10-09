@@ -10,7 +10,7 @@ author: "Juan Paroli"
 El dataset **Iris** (Fisher) es un dataset clásico de clasificación supervisada que busca predecir la **especie** (*setosa, versicolor, virginica*) a partir de medidas morfológicas: *sepal_length*, *sepal_width*, *petal_length* y *petal_width* (cm). Contiene **150** observaciones balanceadas y no presenta valores faltantes. Setosa es linealmente separable; **versicolor** y **virginica** suelen solaparse.
 > Asumo muestras i.i.d. y mediciones consistentes en centímetros.
 
-Esta práctica fue desarrollada en un notebook de jupyter que se puede descargar 👉 [aquí](../iris-data/iris-eda.ipynb)
+Esta práctica fue desarrollada en un notebook de jupyter que se puede descargar 👉 [aquí](../ut1-iris-data/iris-eda.ipynb)
 
 ## 🎯 Objetivos
 - [x] Cargar Iris desde distintas fuentes (URL, `seaborn`, `sklearn`) y comparar estructuras.
