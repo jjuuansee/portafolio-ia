@@ -494,7 +494,7 @@ plt.show()
 
 
     
-![png](feature_scaling_files/feature_scaling_4_1.png)
+![png](results/feature_scaling_4_1.png)
     
 
 
@@ -503,7 +503,7 @@ plt.show()
 
 
     
-![png](feature_scaling_files/feature_scaling_4_3.png)
+![png](results/feature_scaling_4_3.png)
     
 
 
@@ -804,7 +804,7 @@ plt.show() # función para mostrar gráfico
 
 
     
-![png](feature_scaling_files/feature_scaling_8_0.png)
+![png](results/feature_scaling_8_0.png)
     
 
 
@@ -1087,7 +1087,7 @@ print(corr_diff.round(3))
 
 
     
-![png](feature_scaling_files/feature_scaling_12_0.png)
+![png](results/feature_scaling_12_0.png)
     
 
 
@@ -1096,7 +1096,7 @@ print(corr_diff.round(3))
 
 
     
-![png](feature_scaling_files/feature_scaling_12_2.png)
+![png](results/feature_scaling_12_2.png)
     
 
 
@@ -1313,13 +1313,13 @@ plt.show()
 
 
     
-![png](feature_scaling_files/feature_scaling_18_1.png)
+![png](results/feature_scaling_18_1.png)
     
 
 
 
     
-![png](feature_scaling_files/feature_scaling_18_2.png)
+![png](results/feature_scaling_18_2.png)
     
 
 
@@ -1329,7 +1329,7 @@ plt.show()
 
 
     
-![png](feature_scaling_files/feature_scaling_18_4.png)
+![png](results/feature_scaling_18_4.png)
     
 
 
@@ -1437,13 +1437,13 @@ print("- Estas escalas y outliers distorsionan algoritmos basados en distancia (
 
 
     
-![png](feature_scaling_files/feature_scaling_21_1.png)
+![png](results/feature_scaling_21_1.png)
     
 
 
 
     
-![png](feature_scaling_files/feature_scaling_21_2.png)
+![png](results/feature_scaling_21_2.png)
     
 
 
@@ -2011,7 +2011,7 @@ plt.show()
 
 
     
-![png](feature_scaling_files/feature_scaling_36_4.png)
+![png](results/feature_scaling_36_4.png)
     
 
 
