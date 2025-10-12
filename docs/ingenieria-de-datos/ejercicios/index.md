@@ -23,8 +23,8 @@ Bienvenido/a a la sección de ejercicios. Aquí encontrarás tanto las práctica
 
 | Nº | Título                           | Archivo / Link      | Estado |
 |---:|----------------------------------|---------------------|:------:|
-| 5  | Missing Data Detective           | [missing_data.md](ut2-missing-data-detection/)     | ⏳     |
-| 6  | Feature Scaling & Anti-Leakage   | [ames_housing.md](ut2-ames-housing/) | ⏳     |
+| 5  | Missing Data Detective           | [missing_data.md](ut2-missing-data-detection/missing_data.md)     | ✅     |
+| 6  | Feature Scaling & Anti-Leakage   | [ames_housing.md](ut2-ames-housing/ames_housing.md) | ⏳     |
 | 7  | Bias Detection                   | [bias_detection.md](ut2-sesgo-ames-housing/) | ⏳     |
 
 ### Unidad 3 · Feature Engineering
