@@ -1,267 +1,164 @@
-## 🧭 **Resumen explicativo: Práctica 5 a 6 — Feature Scaling**
+---
 
-### 🧩 1. Setup y carga del entorno
-
-```python
-import pandas as pd, numpy as np, matplotlib.pyplot as plt, seaborn as sns
-from sklearn.preprocessing import StandardScaler, OneHotEncoder
-from sklearn.compose import ColumnTransformer
-from sklearn.pipeline import Pipeline
-```
-
-**Propósito:** preparar el entorno con librerías estándar de análisis y visualización.
-
-* `warnings.filterwarnings('ignore')` suprime mensajes innecesarios.
-* `plt.style.use('seaborn-v0_8')` y `sns.set_palette("Set1")` configuran un estilo visual consistente.
-
-✅ *Punto clave:* establecer estilo y reproducibilidad antes de explorar.
+title: "Feature Scaling y Leakage en Ames Housing"
+date: 2025-10-12
+author: "Juan Paroli"
+categories: ["Feature Engineering", "Modeling", "Best Practices"]
+tags: ["Scaling", "Outliers", "Pipelines", "Ames Housing", "PowerTransformer", "Data Leakage"]
 
 ---
 
-### 🏠 2. Carga del dataset Ames Housing y creación de *missing sintético*
+# Feature Scaling y Leakage en Ames Housing
 
-```python
-df = pd.read_csv('AmesHousing.csv')
-df.loc[missing_year, 'Year Built'] = np.nan
-```
+## Contexto
 
-Se introducen tres tipos de valores faltantes controlados:
+Esta práctica extiende el trabajo previo de calidad de datos en [Ames Housing](../ut2-missing-data-detection/missing_data.md) para centrarse en **escalado de features**, **detección/tratamiento de outliers** y **prevención de data leakage**.
+Además, incluye una **investigación avanzada** sobre `PowerTransformer (Yeo–Johnson)` y su comparación con los scalers clásicos.
 
-* **MCAR:** `Year Built` → faltan completamente al azar.
-* **MAR:** `Garage Area` → faltantes dependen de `Garage Type`.
-* **MNAR:** `SalePrice` → faltantes dependen del propio valor.
-
-🎯 *Objetivo:* practicar imputación diferenciando los mecanismos de “missingness”.
+> Objetivo: construir un **pipeline honesto (anti-leakage)**, seleccionar transformaciones adecuadas según la **distribución** de cada variable y demostrar su impacto en la **performance**.
 
 ---
 
-### 🔍 3. Exploración inicial
+## Objetivos
 
-Uso de `df.info()`, `df.describe()`, `df.isnull().sum()`, etc.
-
-**Se analiza:**
-
-* Tipos de datos (int, float, object)
-* Columnas con alto porcentaje de missing (`Alley`, `Pool QC`, etc.)
-* Duplicados y memoria ocupada
-
-💡 *Aprendizaje:* antes de imputar o escalar, es esencial conocer qué tan limpio y equilibrado está el dataset.
+* [x] Diagnosticar **escalas dispares** y **outliers** que afecten algoritmos sensibles a distancia.
+* [x] Comparar `StandardScaler`, `MinMaxScaler`, `RobustScaler` vs `PowerTransformer`.
+* [x] Demostrar **data leakage** con tres estrategias (incorrecta/correcta/pipeline).
+* [x] Validar con **cross-validation** y baseline para medir valor real.
 
 ---
 
-### 📉 4. Patrones de missing data
+## Desarrollo
 
-Se genera un gráfico de barras y un histograma de filas con NaN.
+* Dataset: **Ames Housing** (2930 filas, 82 columnas).
+* *Missing* sintético agregado en la [práctica previa](../ut2-missing-data-detection/missing_data.md) (MCAR/MAR/MNAR) y luego guardado en `df_imputed` (cero NaN restantes con reglas simples + “smart” por vecindario/estilo/garage).
 
-**Interpretación:**
+### 1. Exploración inicial
 
-* 29 columnas con valores faltantes.
-* Algunas con más del 90% → probablemente descartables.
+Comenzamos analizando las escalas de las variables mediante un boxplot que apliga la transformacion *log1p*.
 
-📊 *Competencia técnica:* aprender a visualizar la magnitud y distribución del problema de datos faltantes.
+![](results/top5-escalas.png)
 
----
+Estas escalas se dan ya que estas variables tienen rangos enormes comparadas con otras.
 
-### 🧩 5. Clasificación MCAR / MAR / MNAR
+- `PID`: va de 5.26e+08 a 1.00e+09 (escala de cientos de millones).
 
-Mediante `groupby()` se comparan los patrones de missing con variables categóricas.
+- `Lot Area`: va de 1300 a 215,245 (rango muy grande).
 
-Ejemplo:
+- `Mas Vnr Area`: de 0 a 1600, mientras que muchas otras están entre 1–10.
 
-```python
-df.groupby('Neighborhood')['Year Built'].apply(lambda x: x.isnull().sum())
-```
+- `Year Built` y `Year Remod/Add`: rangos de ~100 años (1872–2010), mucho mayores que escalas ordinales (1–10).
 
-**Conclusión:**
-Cada variable se clasifica según la dependencia observada.
+- `Order`: de 1 a 2930, también más grande que calificaciones como Overall Qual (1–10).
 
 ---
 
-### ⚠️ 6. Detección de outliers
+### 2. Outliers
 
-Se implementan dos métodos:
+Para detectar los outlier se utilizaron dos enfoques:
 
-```python
-def detect_outliers_iqr(df, col): ...
-def detect_outliers_zscore(df, col): ...
-```
+| Método            | Cuándo usar                          |
+| ----------------- | ------------------------------------ |
+| **IQR (1.5×IQR)** | Distribuciones sesgadas/colas largas |
+| **Z-Score (±3σ)** | Distribuciones ~normales             |
 
-**Comparación:**
+**Resultados clave**
 
-* IQR → robusto a distribuciones sesgadas.
-* Z-score → útil para distribuciones normales.
+* Por IQR, `Lot Area` tuvo **127** outliers (≈4.3%).
+* Por Z-Score, `Lot Area` tuvo **29** outliers (≈1.0%).
+* En el barrido completo, el % promedio de outliers por IQR fue ≈ **2.94%**; variables como `Enclosed Porch` y `Screen Porch` concentran muchos ceros (límites IQR en 0), elevando conteos.
 
-📈 Se reportan conteos y límites, mostrando que algunas variables (ej. `Enclosed Porch`, `Lot Area`) tienen altos porcentajes de outliers.
-
----
-
-### 🧱 7. Imputación de valores faltantes
-
-Tres estrategias básicas (`mean`, `median`, `mode`) y una avanzada (`smart_imputation()`).
-
-🔹 *SimpleImputer* (numéricas: mediana / categóricas: moda)
-🔹 *Smart imputation* contextual: combina medianas por grupo y crea flags de missingness.
-
-📘 *Mensaje clave:* la imputación debe ser informada, no ciega.
+Entre las aplicaciones de `StandardScaler`, `MinMaxScaler` y `RobustScaler` no cambió la detección de outliers ya que dieron la misma cantidad para los 3 métodos como se ve en la siguiente sección.
 
 ---
 
-### 🧬 8. Anti-leakage
+### 3. Escalado
 
-El split correcto:
+Se probó el efecto del escalado en la detección de outliers (con `Lot Area`):
 
-```python
-X_train, X_valid, X_test = train_test_split(...)
-numeric_imputer.fit(X_train)
-```
-
-📛 **Regla de oro:** “split antes de imputar o escalar”.
-
-Evita que estadísticas del test “se filtren” al entrenamiento, inflando métricas.
+| Escaler            | IQR (conteo) | Z-Score (conteo) |
+| ------------------ | -----------: | ---------------: |
+| **StandardScaler** |          127 |               29 |
+| **MinMaxScaler**   |          127 |               29 |
+| **RobustScaler**   |          127 |               29 |
 
 ---
 
-### 📊 9. Comparación de distribuciones y correlaciones
+### PowerTransformer (Yeo–Johnson)
 
-Se grafican histogramas y heatmaps de correlaciones antes/después de la imputación.
+PowerTransformer corrige la asimetría de las distribuciones. Siendo útil en el dataset actual.
 
-**Objetivo:** comprobar que la imputación no altere excesivamente las relaciones entre variables.
+**Antes (skew | kurtosis)**
 
----
+* `SalePrice`: 1.44 | 6.18
+* `Lot Area`: 12.82 | 265.02
+* `Misc Val`: 22.00 | 566.20
+* `Total Bsmt SF`: 1.16 | 9.14
 
-### 🔧 10. Creación de *Pipeline* de limpieza
+**Después con PowerTransformer (YJ, standardize=True)**
 
-```python
-preprocessor = ColumnTransformer([
-  ('num', numeric_transformer, numeric_features),
-  ('cat', categorical_transformer, categorical_features)
-])
-```
+* `SalePrice__PT`: 0.08 | 2.21
+* `Lot Area__PT`: 0.10 | 5.22
+* `Misc Val__PT`: 5.05 | 23.53 
+* `Total Bsmt SF__PT`: 0.11 | 4.09
 
-**Beneficio:** reproducibilidad y protección automática contra *data leakage*.
-
----
-
-## 🧠 **Transición a Práctica 6: Feature Scaling**
-
-### 🧭 Paso 1–2: Análisis de escalas
-
-Se inspeccionan rangos (`max - min`) y distribuciones.
-
-Conclusiones:
-
-* Variables con escalas más amplias: `PID`, `Lot Area`, `Misc Val`, `Total Bsmt SF`, `SalePrice`.
-* Outliers extremos: `Lot Area` y `Mas Vnr Area`.
-
-⚠️ *Estas diferencias afectan modelos basados en distancia (KNN, SVM).*
+![](results/comparativa_skew.png)
 
 ---
 
-### ⚗️ Paso 3–4: Preparación y split
+### 5. Data leakage
 
-Definición del target:
+Tres métodos con `KNeighborsRegressor (k=5)`:
 
-```python
-target_col = "SalePrice"
-```
+| Método                                         | ¿Hay leakage? |         R² |  MAE (USD) |
+| ---------------------------------------------- | ------------- | ---------: | ---------: |
+| **1. Escalar todo y luego split**              | **Sí**        |     0.1846 |     36,914 |
+| **2. Split → fit scaler en train → transform** | No            | **0.1957** | **36,443** |
+| **3. Pipeline (Scaler→Modelo)**                | No            | **0.1957** | **36,443** |
 
-Selección de features:
+El método 1 “filtra” información del test al train (medias/desvíos).
+El **Pipeline** (3) automatiza el orden correcto y es el estándar para **evitar errores** y usar **cross-validation** sin fugas.
 
-```python
-["Lot Area", "Misc Val", "Total Bsmt SF"]
-```
-
-Y separación en train/test antes de escalar → confirmando nuevamente que el problema de escalas persiste.
-
----
-
-### 📏 Paso 5: Experimento de escalado y outliers
-
-Comparación entre:
-
-* `StandardScaler`
-* `MinMaxScaler`
-* `RobustScaler`
-
-🔎 Resultado:
-No cambió la detección de outliers (127 por IQR y 29 por Z-score), pero **RobustScaler** reduce la sensibilidad a ellos.
+Baseline (Dummy median, test): R² = −0.0443; MAE ≈ 39,416.
 
 ---
 
-### 🧪 Paso 6: Investigación independiente — *PowerTransformer*
+### 6. Validación final (CV=5)
 
-**Transformador elegido:** `PowerTransformer(method='yeo-johnson')`
+**Pipeline ganador:** `PowerTransformer(YJ) → KNN (k=5)`
 
-Propósito:
-Normalizar distribuciones sesgadas (reduce skewness y kurtosis).
+* R² (folds): `[0.0340, 0.1525, 0.1490, 0.0223, 0.2254]` → **0.1166 ± 0.0773**
+* MAE (folds): `[38,486; 33,607; 30,843; 34,818; 32,192]` → **33,989 ± 2,615**
 
-**Resultados:**
+**Baseline (Dummy median, CV=5)**
 
-| Variable      | Skew antes | Skew después |
-| ------------- | ---------- | ------------ |
-| SalePrice     | 1.44       | 0.075        |
-| Lot Area      | 12.82      | 0.10         |
-| Misc Val      | 22.0       | 5.05         |
-| Total Bsmt SF | 1.16       | 0.11         |
+* R²: **−0.0248 ± 0.0248**
+* MAE: **35,194 ± 2,027**
 
-✅ *PowerTransformer* fue el único que corrigió la asimetría, mientras que los scalers clásicos solo escalan linealmente.
+> El pipeline con `PowerTransformer` brinda **R² positivo** sostenido y mejora el MAE vs. baseline (~**1,200 USD** menos en media), aunque el problema con sólo 3 features sigue siendo desafiante (resultado *modesto pero real*).
 
 ---
 
-### 🔬 Paso 7: Comparación con scalers clásicos
+## Reflexión
 
-Resultados muestran:
+**Aprendizajes clave**
 
-* Standard / MinMax / Robust no cambian la forma.
-* PowerTransformer mejora normalidad → ideal para datos con colas largas o asimetría fuerte.
+* **Detectar y tratar outliers antes** del escalado evita distorsionar medias/desvíos y rangos; luego aplicar escalado/transformación.
+* Los **scalers lineales** (Standard/MinMax/Robust) **no corrigen** asimetría; `PowerTransformer` sí.
+* **Pipeline + CV** es **obligatorio** para evitar leakage y obtener métricas honestas.
+* En variables como `Lot Area` o `SalePrice`, las **colas largas** justifican transformaciones no lineales.
 
----
+**Limitaciones**
 
-### 🧱 Paso 8: Anti-leakage experimental
-
-Comparación de tres métodos:
-
-1. **Con leakage:** escalado antes del split
-2. **Sin leakage:** split antes del escalado
-3. **Pipeline:** anti-leakage automático
-
-| Método      | R²     | MAE   |
-| ----------- | ------ | ----- |
-| Con leakage | 0.1846 | 36914 |
-| Sin leakage | 0.1957 | 36442 |
-| Pipeline    | 0.1957 | 36442 |
-
-📊 *Conclusión:* el leakage puede parecer leve, pero invalida los resultados.
+* `Misc Val` presenta **masa en 0** por lo tanto persiste asimetría aun con Yeo-Johnson.
+* El experimento de modelado usó **pocas features** (demostración). Un modelo final debería incorporar más señales (calidad, metros cubiertos, barrio, interacción, etc.).
 
 ---
 
-### 🧩 Paso 9: Validación final
+## 📚 Referencias
 
-**Pipeline final:**
-
-```python
-Pipeline([
-  ("scaler", PowerTransformer(method="yeo-johnson")),
-  ("modelo", KNeighborsRegressor(n_neighbors=5))
-])
-```
-
-**Cross-validation (CV=5):**
-
-* R² promedio ≈ 0.12
-* MAE ≈ 34,000
-  Vs baseline R² ≈ -0.02 (DummyRegressor)
-
-✅ *Pipeline + PowerTransformer* mejora rendimiento y mantiene buenas prácticas.
-
----
-
-### 💡 Conclusión general
-
-* **Scaler ganador:** `PowerTransformer (Yeo-Johnson)`
-* **Mejor práctica:** tratar outliers antes del escalado
-* **Pipeline:** obligatorio para evitar *data leakage*
-* **Regla de oro:** *Split → Transform → Train*
-* **Checklist final:** revisa escalas, asimetrías, outliers y orden de operaciones.
+* Documentación `scikit-learn`: *Preprocessing (scalers, PowerTransformer), Pipeline, Model Selection*.
+* Box-Cox & Yeo–Johnson: papers originales y notas de sklearn (para fórmulas y supuestos).
+* Dataset: *Ames Housing* (Kaggle).
 
 ---
