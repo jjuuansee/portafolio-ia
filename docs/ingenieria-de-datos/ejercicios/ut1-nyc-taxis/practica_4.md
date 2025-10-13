@@ -4,7 +4,7 @@ date: 2025-09-07
 author: "Juan Paroli"
 ---
 
-# 🚕 Práctica 4 — Integración de múltiples fuentes de datos (NYC Taxi)
+# 🚕 Integración de múltiples fuentes para analizar el sistema de taxis en NYC
 
 ## 📝 Contexto
 
@@ -20,6 +20,7 @@ El objetivo fue **preparar, limpiar y unir datos heterogéneos** para realizar u
 - [ ] Implementar un pipeline simple en **Prefect** con tareas orquestadas.  
 
 ## ⚙️ Desarrollo
+
 1. **Carga de datos**:  
       - Taxi trips (`.parquet`), zones (`.csv`), calendar (`.json`).  
       - Normalización de columnas y creación de campo `pickup_date`.  

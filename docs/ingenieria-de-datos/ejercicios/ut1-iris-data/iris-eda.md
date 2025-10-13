@@ -4,7 +4,7 @@ date: 2025-09-14
 author: "Juan Paroli"
 ---
 
-# 🌸 Práctica 1 — Análisis Exploratorio (EDA) de *Iris*
+# 🌸 Entre pétalos y datos: explorando el clásico dataset *Iris*
 
 ## 📝 Contexto
 El dataset **Iris** (Fisher) es un dataset clásico de clasificación supervisada que busca predecir la **especie** (*setosa, versicolor, virginica*) a partir de medidas morfológicas: *sepal_length*, *sepal_width*, *petal_length* y *petal_width* (cm). Contiene **150** observaciones balanceadas y no presenta valores faltantes. Setosa es linealmente separable; **versicolor** y **virginica** suelen solaparse.
