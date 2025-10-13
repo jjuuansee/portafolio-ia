@@ -17,7 +17,7 @@ Bienvenido/a a la sección de ejercicios. Aquí encontrarás tanto las práctica
 | 1  | EDA de Iris            | [EDA_iris.md](ut1-iris-data/iris-eda.md)   |   ✅  |
 | 2  | Creación del Portfolio | [portfolio-creation.md](ut1-portfolio-creation/portfolio_creation.md)   |   ✅  |
 | 3  | EDA de Netflix         | [EDA_netflix.md](ut1-netflix-data/netflix-data.md)   |   ✅  |
-| 4  | EDA de NYC Taxis       | [EDA_nyc_taxis.md](ut1-nyc-taxis/practica_4.md)   |   ⏳  |
+| 4  | EDA de NYC Taxis       | [EDA_nyc_taxis.md](ut1-nyc-taxis/practica_4.md)   |   ✅  |
 
 ### Unidad 2 · Calidad & Ética
 
@@ -31,7 +31,7 @@ Bienvenido/a a la sección de ejercicios. Aquí encontrarás tanto las práctica
 
 | Nº | Título                           | Archivo / Link      | Estado |
 |---:|----------------------------------|---------------------|:------:|
-| 8  | Feature Engineering              | []()                |      |
+| 8  | Feature Engineering              | [feature_engineering.md](ut3-feature-engineering/feature_engineering.md)                |   ✅   |
 
 ---
 
