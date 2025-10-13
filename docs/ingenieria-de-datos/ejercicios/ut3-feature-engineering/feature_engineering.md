@@ -8,12 +8,9 @@ author: "Juan Paroli"
 
 ## Contexto
 
-Este análisis se centró en predecir precios de viviendas de un dataset sintético.  
+Este análisis se centró en predecir precios de viviendas de un dataset sintético. Ajustamos algunas features mediante Feature Engineering para encontrar la mejor relación entre las columnas para predecir el precio.
 
-ASDASDDADADASDDDDDDDDDDDDDDDDDDASDADFDAFSDASSSSSSSSSSSSSSSADGAGDAGAG
-Hay que mejorar el contexto
-ASSSSSSSSSSSSSSSSSSSSSDASSSSSSSSSSSSSSSSSSSSSSSFFFFFFFFFFFFFFFFFFFFF
-> agregar mas info comentada tambian aca
+Las mismas técnicas de Feature Engineering fueron aplicadas a un dataset con datos reales de casas: *Ames Housing*.
 
 ---
 
@@ -271,13 +268,13 @@ Esta práctica me hizo notar la importancia que tiene analizar las relaciones en
 - **Kaggle (2011). Ames Housing Dataset**. [Disponible aquí](https://www.kaggle.com/datasets/prevek18/ames-housing-dataset)
 
 
-- Pandas Documentation. User Guide — Working with Missing Data and Feature Creation.
+- **Pandas Documentation**. User Guide — Working with Missing Data and Feature Creation.
 https://pandas.pydata.org/docs/user_guide/index.html
 
-- Scikit-learn Documentation. Feature Engineering and Preprocessing Modules.
+- **Scikit-learn Documentation**. Feature Engineering and Preprocessing Modules.
 https://scikit-learn.org/stable/modules/preprocessing.html
 
-- Kaggle Course: Feature Engineering.
+- **Kaggle Course**: Feature Engineering.
 https://www.kaggle.com/learn/feature-engineering
 
 ---
