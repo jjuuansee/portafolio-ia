@@ -6,20 +6,23 @@ author: "Juan Paroli"
 
 # 🌸 Entre pétalos y datos: explorando el clásico dataset *Iris*
 
-## 📝 Contexto
+## Contexto
+
 El dataset **Iris** (Fisher) es un dataset clásico de clasificación supervisada que busca predecir la **especie** (*setosa, versicolor, virginica*) a partir de medidas morfológicas: *sepal_length*, *sepal_width*, *petal_length* y *petal_width* (cm). Contiene **150** observaciones balanceadas y no presenta valores faltantes. Setosa es linealmente separable; **versicolor** y **virginica** suelen solaparse.
+
 > Asumo muestras i.i.d. y mediciones consistentes en centímetros.
 
-Esta práctica fue desarrollada en un notebook de jupyter que se puede descargar 👉 [aquí](../ut1-iris-data/iris-eda.ipynb)
+Esta práctica fue desarrollada en un notebook de jupyter que puedes encontrar [aquí](../ut1-iris-data/iris-eda.ipynb)
 
-## 🎯 Objetivos
+## Objetivos
+
 - [x] Cargar Iris desde distintas fuentes (URL, `seaborn`, `sklearn`) y comparar estructuras.
 - [x] Realizar chequeos básicos (shape, tipos, nulos) y construir un **data dictionary** mínimo.
 - [x] Responder preguntas de negocio simples con estadísticas y correlaciones.
 
-## ⚙️ Desarrollo
-**1) Setup y carga**
+## Desarrollo
 
+### 1. Setup y carga
 - Librerías: `pandas`, `seaborn`, `matplotlib`.
 - Fuentes:
   - CSV remoto: `https://raw.githubusercontent.com/mwaskom/seaborn-data/master/iris.csv` → **df**
@@ -29,18 +32,20 @@ Esta práctica fue desarrollada en un notebook de jupyter que se puede descargar
   - **df** vs **df_sns** → *iguales* ✅
   - **df_sns** vs **df_sklearn** → *distintas* (nombres de columnas y codificación de `species`) ⚠️
 
-**2) Chequeos y diccionario**
+### 2. Chequeos y diccionario
 
 - `shape`: (150, 5) ; `dtypes`: 4 numéricas + 1 categórica (`species`).
 - `isna().sum()` = 0 en todas.
 - `describe()` confirma rangos y cuartiles típicos.
 
-**3) Correlaciones y relaciones**
+### 3. Correlaciones y relaciones
 
 - Matriz (numéricas): `petal_length`–`petal_width` = **0.963**; `sepal_length`–`petal_length` = **0.872**.
 - `sepal_width` se asocia de forma negativa moderada con variables de pétalo.
 
-**4) Preguntas de negocio (resueltas)**
+### 4. Preguntas de negocio (resueltas)
+
+Desarrollamos algunas preguntas de negocio, luego desarrollamos el código para poder responderlas:
 
 1. **¿Cuál es la especie con pétalo más largo?** → **virginica** (promedios y máximos de pétalo más altos).
 2. **¿Relación entre largo de sépalo y largo de pétalo?** → **Positiva y fuerte** (r ≈ **0.872**).

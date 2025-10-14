@@ -118,7 +118,7 @@ very_short = netflix[netflix["title_length"] < 5]
 
 **Se puede ver el desarrollo del práctico detalladamente [aquí](../ut1-netflix-data/analysis_prueba.md)**
 
-## 💡 Reflexión
+## Reflexión
 
 - **Qué aprendí**: a mantener una línea de **trazabilidad de calidad de datos** (faltantes/duplicados/rangos) y a **vincular métricas** (mix, tiempos, países, ratings) con *implicancias de negocio*.  
 - **Decisiones de visualización**: *line plot* para continuidad temporal (tendencias), *barplot* para categorías (país/ratings/géneros) y *heatmaps* para co-ocurrencias.  
