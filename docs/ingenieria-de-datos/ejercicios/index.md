@@ -35,9 +35,11 @@ Bienvenido/a a la sección de ejercicios. Aquí encontrarás tanto las práctica
 
 ---
 
-## 📝 Ejercicios opcionales
+## 📝 Ejercicios adicionales
 
-<!-- - [Ejercicio extra 1: Limpieza de datos](extras/data-cleaning.md) -->
-<!-- - [Ejercicio extra 2: Visualización avanzada](extras/advanced-viz.ipynb) -->
+| Nº | Título                           | Archivo / Link      | Estado |
+|---:|----------------------------------|---------------------|:------:|
+| 1  | Detección de Fraude en tarjeta de crédito | [fraud_detection.md](extras/credit-card-fraud-detection/credit_card_fraud_detection.md)     | ✅     |
+
 
 ---

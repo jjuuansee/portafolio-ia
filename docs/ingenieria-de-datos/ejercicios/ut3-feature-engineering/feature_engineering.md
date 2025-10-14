@@ -1,6 +1,6 @@
 ---
-title: "Plantilla de entrada de portafolio"
-date: 2025-01-01
+title: "Práctica 8"
+date: 2025-10-14
 author: "Juan Paroli"
 ---
 
@@ -14,7 +14,7 @@ Las mismas técnicas de Feature Engineering fueron aplicadas a un dataset con da
 
 ---
 
-## 🎯 Objetivos
+## Objetivos
 - [x] Encontrar patrones y correlaciones entre variables.
 - [x] Crear features para encontrar patrones no obvios en los datos.
 - [x] Predecir precios de la viviendas con la mejor precisión.
@@ -276,5 +276,7 @@ https://scikit-learn.org/stable/modules/preprocessing.html
 
 - **Kaggle Course**: Feature Engineering.
 https://www.kaggle.com/learn/feature-engineering
+
+- **Notebook de Jupyter**: El notebook donde se realizaron los códigos de python se pueed encontrar [aquí](ocho.ipynb)
 
 ---
