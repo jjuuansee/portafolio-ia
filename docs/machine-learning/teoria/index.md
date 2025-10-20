@@ -14,8 +14,8 @@ En esta sección se encuentran los resúmenes y apuntes teóricos correspondient
 | Nº | Tema / Resumen              | Archivo / Link                            | Estado |
 |---:|-----------------------------|-------------------------------------------|:------:|
 | 1  | Redes Neuronales            | [redes_neuronales.md](redes_neuronales.md)|  ✅    |
-<!-- | 2  | Búsqueda no informada             | [búsqueda-no-informada.md](01_busqueda-no-informada.md) | ✅     |
-| 3  | Búsqueda informada             | [búsqueda-informada.md](03_busqueda-informada.md) | ✅     |
+| 2  | Algoritmo Naive Bayes       | [naive-bayes.md](bayes.md) | ✅     |
+<!-- | 3  | Búsqueda informada             | [búsqueda-informada.md](03_busqueda-informada.md) | ✅     |
 |4  | Held Karp             | [held-karp.md](04_held_karp.md) | ✅     | -->
 
 
