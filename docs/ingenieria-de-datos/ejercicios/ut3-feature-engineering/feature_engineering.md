@@ -15,6 +15,7 @@ Las mismas técnicas de Feature Engineering fueron aplicadas a un dataset con da
 ---
 
 ## Objetivos
+
 - [x] Encontrar patrones y correlaciones entre variables.
 - [x] Crear features para encontrar patrones no obvios en los datos.
 - [x] Predecir precios de la viviendas con la mejor precisión.

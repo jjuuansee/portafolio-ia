@@ -32,6 +32,7 @@ Bienvenido/a a la sección de ejercicios. Aquí encontrarás tanto las práctica
 | Nº | Título                           | Archivo / Link      | Estado |
 |---:|----------------------------------|---------------------|:------:|
 | 8  | Feature Engineering              | [feature_engineering.md](ut3-feature-engineering/feature_engineering.md)                |   ✅   |
+| 9  | Advanced Encoding              | [advanced_encoding.md](ut3-encoding/encoding.md)                |   ✅   |
 
 ---
 
