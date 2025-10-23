@@ -5,3 +5,8 @@ mkdocs-awesome-pages-plugin==2.9.2
 mkdocs-git-revision-date-localized-plugin==1.2.4
 mkdocs-glightbox==0.3.7
 Babel==2.15.0
+
+mkdocs-material
+mkdocs-jupyter
+mkdocs-glightbox
+mkdocs-git-revision-date-localized-plugin

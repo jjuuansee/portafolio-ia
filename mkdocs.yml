@@ -88,6 +88,9 @@ plugins:
       type: datetime
   - glightbox
   - tags
+  - mkdocs-jupyter:
+      execute: false           # no ejecutar celdas en el build
+      include_source: true     # muestra el icono para descargar .ipynb
   # opcionales:
   # - minify:
   #     minify_html: true

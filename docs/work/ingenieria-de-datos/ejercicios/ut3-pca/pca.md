@@ -122,7 +122,7 @@ Y por último conluimos con unas features compuestas que indicaban scores para l
 
 En resumen creamos 12 features que ayudan a encontrar relaciones entre esos nuevos ratios y el precio.
 
-![]()
+
 
 ---
 
@@ -134,7 +134,7 @@ Se evaluó la relevancia de **15 variables predictoras** respecto al precio de v
 
 2. **Random Forest Feature Importance:** evalúa el impacto de cada feature en la reducción del error dentro de un modelo no lineal y de alta capacidad.
 
-![]()
+
 
 Para **mutual information**:
 
@@ -191,8 +191,6 @@ Futuras ideas de features:
 - Variables no lineales (cuadrados, logs) y normalización de distancias.
 - Incorporar década de construcción o indicadores de accesibilidad.
 - Ratios financieros como precio/ingreso promedio de la zona.
-
-![]()
 
 ---
 
@@ -306,6 +304,6 @@ https://scikit-learn.org/stable/modules/preprocessing.html
 - **Kaggle Course**: Feature Engineering.
 https://www.kaggle.com/learn/feature-engineering
 
-- **Notebook de Jupyter**: El notebook donde se realizaron los códigos de python se pueed encontrar [aquí](ocho.ipynb)
+- **Notebook de Jupyter**: El notebook donde se realizaron los códigos de python se pueed encontrar
 
 ---
