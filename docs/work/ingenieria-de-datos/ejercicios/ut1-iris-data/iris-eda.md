@@ -4,6 +4,8 @@ date: 2025-09-14
 author: "Juan Paroli"
 ---
 
+<div id="show-toc"></div>
+
 # 🌸 Entre pétalos y datos: explorando el clásico dataset *Iris*
 
 ## Contexto

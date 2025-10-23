@@ -44,3 +44,44 @@ mjx-container:not([display="true"]) {
   border-radius: 8px;
   box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
 }
+
+/* Hide right-hand table of contents (TOC) column */
+/* Material uses .md-sidebar--secondary for the right-side toc */
+.md-sidebar--secondary {
+  display: none !important;
+}
+
+/* Expand main content to use the freed space */
+.md-main {
+  grid-template-columns: 1fr !important;
+}
+
+/* If a page requests the TOC, add a body class `show-toc` to restore layout */
+body.show-toc .md-sidebar--secondary {
+  display: block !important;
+}
+
+/* When showing TOC, restore a two-column layout (main + toc). Adjust width as needed */
+body.show-toc .md-main {
+  grid-template-columns: 1fr 300px !important;
+}
+
+/* Hide left-hand primary sidebar by default */
+.md-sidebar, .md-sidebar--primary {
+  display: none !important;
+}
+
+/* If a page requests the left sidebar, add a body class `show-sidebar` to restore it */
+body.show-sidebar .md-sidebar, body.show-sidebar .md-sidebar--primary {
+  display: block !important;
+}
+
+/* When both sidebars are shown (left + right), use three columns */
+body.show-sidebar.show-toc .md-main {
+  grid-template-columns: 300px 1fr 300px !important;
+}
+
+/* When only sidebar is shown, left + main */
+body.show-sidebar:not(.show-toc) .md-main {
+  grid-template-columns: 300px 1fr !important;
+}

@@ -1,13 +1,5 @@
 nav:
   - Inicio: index.md
-  - Acerca de mí: acerca.md
-  - Ingeniería de Datos: ingenieria-de-datos/
-  - Algabo: algabo/
-  - Machine Learning: machine-learning/
+  - Acerca de Mí: acerca.md
+  - Proyectos: work/
   - Recursos: recursos/
-
-arrange:
-  - index.md
-  - portfolio
-  - recursos
-  - acerca.md

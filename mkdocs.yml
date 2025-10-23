@@ -1,6 +1,8 @@
 site_name: "Portfolio IA"
-repo_name: GitHub
-site_description: "Apuntes y proyectos de Algoritmos y Grafos (IA)"
+site_author: Juan Paroli
+docs_dir: docs
+repo_url: https://github.com/jjuuansee/portafolio-ia
+repo_name: jjuuansee/portafolio-ia
 
 theme:
   name: material
@@ -8,9 +10,12 @@ theme:
   icon:
     repo: fontawesome/brands/github
   features:
-    - navigation.sections
+    - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.top
     - navigation.indexes
+    - navigation.instant
+    - navigation.tracking
     - content.code.copy
     - content.code.annotate       # tips numerados en bloques de código
     - content.tooltips
@@ -39,9 +44,9 @@ theme:
 extra:
   social:
     - icon: fontawesome/brands/github
-      link: https://github.com/tuuser
+      link: https://github.com/jjuuansee
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/tuuser/
+      link: https://www.linkedin.com/in/juan-sebastián-paroli-costa-b71a34263/
 
 extra_css:
   - assets/styles/custom.css
@@ -50,6 +55,7 @@ extra_javascript:
   - assets/js/mathjax.js
   - https://polyfill.io/v3/polyfill.min.js?features=es6
   - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+  - assets/js/toc-control.js
 
 markdown_extensions:
   - admonition
@@ -70,12 +76,16 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.arithmatex:
       generic: true
+      block_tag: div
+      inline_tag: span
 
 plugins:
   - search
   - awesome-pages
   - git-revision-date-localized:
       fallback_to_build_date: true
+      timezone: America/Montevideo
+      type: datetime
   - glightbox
   - tags
   # opcionales:
