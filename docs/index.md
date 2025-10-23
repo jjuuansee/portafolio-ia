@@ -1,6 +1,9 @@
 ---
 title: "Inicio"
 date: 2025-08-22
+hide:
+    - navigation
+    - toc
 ---
 # ¡Bienvenido/a a mi Portafolio!
 
