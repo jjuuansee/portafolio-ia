@@ -1,6 +1,7 @@
 site_name: "Portfolio IA"
-repo_name: GitHub
-site_description: "Apuntes y proyectos de Algoritmos y Grafos (IA)"
+repo_name: jjuuansee/portafolio-ia
+repo_url: https://github.com/jjuuansee/portafolio-ia
+site_description: "Repositorio de la carrera Ingeniería en Inteligencia Artificial y Ciencia de Datos"
 
 theme:
   name: material
