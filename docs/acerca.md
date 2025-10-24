@@ -1,6 +1,9 @@
 ---
-title: "Acerca de mí"
-date: 2025-08-20
+title: "Recursos"
+date: 2025-10-24
+hide:
+    - navigation
+    - toc
 ---
 
 # 🌓 Acerca de mí

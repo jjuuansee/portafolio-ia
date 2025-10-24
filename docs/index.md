@@ -1,14 +1,15 @@
 ---
 title: "Inicio"
-date: 2025-08-22
+date: 2025-10-24
 hide:
     - navigation
     - toc
 ---
+
 # ¡Bienvenido/a a mi Portafolio!
 
 Este sitio recopila mis avances, prácticas y resúmenes teóricos en el marco de mi formación en **Ciencia de Datos y Aprendizaje Automático**.  
-El objetivo es documentar mi progreso, reflexiones y resultados de forma ordenada y accesible.
+El objetivo es documentar mi progreso, reflexiones y resultados de forma ordenada y accesible durante el desarrollo de mi carrera.
 
 ---
 
@@ -21,8 +22,6 @@ El objetivo es documentar mi progreso, reflexiones y resultados de forma ordenad
 ---
 
 !!! tip "Sugerencia"
-    Explorá las secciones desde el menú lateral.  
-    Cada sección incluye tablas con el estado de avance, links a notebooks/markdowns y notas adicionales.  
+    Explorá las secciones desde el menú.  
 
 ---
-

@@ -1,64 +1,74 @@
 site_name: "Portfolio IA"
-repo_name: jjuuansee/portafolio-ia
+site_author: Juan Paroli Costa
+docs_dir: docs
 repo_url: https://github.com/jjuuansee/portafolio-ia
-site_description: "Repositorio de la carrera Ingeniería en Inteligencia Artificial y Ciencia de Datos"
+repo_name: jjuuansee/portafolio-ia
+
+extra_css:
+  - assets/styles/custom.css
+extra_javascript:
+  - assets/js/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
 
 theme:
+  font: false
   name: material
-  language: es
+  # custom_dir: overrides
   icon:
+    # logo: myicons/logo
     repo: fontawesome/brands/github
+  # favicon: img/favicon.png
   features:
+    - toc.follow
+    - navigation.indexes
     - navigation.tabs
     - navigation.tabs.sticky
-    - navigation.top
     - navigation.footer
-    - navigation.indexes
     - navigation.instant
-    - navigation.expand
+    - navigation.instant.progress
+    - navigation.instant.preview
+    - navigation.tracking
+    - navigation.top
+    - navigation.sections
+    - search.highlight
+    - search.share
+    - search.suggest
     - content.code.copy
     - content.code.annotate
     - content.tooltips
     - content.tabs.link
-    - toc.follow
-    - search.suggest
-    - search.highlight
-    - navigation.footer
+  language: es
   palette:
+    # Light Mode
     - scheme: default
       primary: indigo
       accent: deep orange
       toggle:
         icon: material/weather-night
         name: Cambiar a oscuro
+    # Dark Mode
     - scheme: slate
       primary: indigo
       accent: deep orange
       toggle:
         icon: material/weather-sunny
         name: Cambiar a claro
-  font:
-    text: Inter
-    code: JetBrains Mono
 
-extra:
-  social:
-    - icon: fontawesome/brands/github
-      link: https://github.com/tuuser
-    - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/in/tuuser/
-
-extra_css:
-  - assets/styles/custom.css
-
-extra_javascript:
-  - assets/js/mathjax.js
-  - https://polyfill.io/v3/polyfill.min.js?features=es6
-  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+plugins:
+  - search
+  - glightbox
+  - awesome-pages
+  - git-revision-date-localized:
+      fallback_to_build_date: true
+  - tags
+  # opcionales:
+  # - minify:
+  #     minify_html: true
 
 markdown_extensions:
-  - admonition
   - attr_list
+  - admonition
   - footnotes
   - tables
   - toc:
@@ -76,13 +86,10 @@ markdown_extensions:
   - pymdownx.arithmatex:
       generic: true
 
-plugins:
-  - search
-  - awesome-pages
-  - git-revision-date-localized:
-      fallback_to_build_date: true
-  - glightbox
-  - tags
-  # opcionales:
-  # - minify:
-  #     minify_html: true
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/jjuuansee/
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/in/juan-sebasti%25C3%25A1n-paroli-costa-b71a34263/?skipRedirect=true
+      
