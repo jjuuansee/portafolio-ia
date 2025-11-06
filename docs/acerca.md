@@ -226,7 +226,7 @@ hide:
     </p>
   </div>
   <div class="about-hero-image">
-    <img src="/assets/imgs/juanse" alt="Juan Paroli" />
+    <img src="/assets/imgs/juanse.jpg" alt="Juan Paroli" />
   </div>
 </div>
 
