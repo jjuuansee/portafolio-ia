@@ -501,7 +501,7 @@ html {
   </div>
   
   <div class="hero-card">
-    <img src="/assets/imgs/juanse.PNG" alt="Juan Paroli" />
+    <img src="/assets/imgs/juanse.jpg" alt="Juan Paroli" />
     <h3>Juan Sebastián Paroli Costa</h3>
     <p>Data Science • ML • Analytics</p>
   </div>
@@ -525,7 +525,7 @@ html {
 
 <h2 class="section-title">
   <span>Proyectos destacados</span>
-  <a href="proyectos.md" style="font-size: 1rem; font-weight: 400; color: var(--md-primary-fg-color); text-decoration: none;">Ver todos →</a>
+  <a href="proyectos/" style="font-size: 1rem; font-weight: 400; color: var(--md-primary-fg-color); text-decoration: none;">Ver todos →</a>
 </h2>
 
 <div class="grid-3">
