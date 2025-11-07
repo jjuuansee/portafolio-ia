@@ -301,7 +301,7 @@ hide:
       </svg>
       Email
     </a>
-    <a href="https://www.linkedin.com/in/juan-sebasti%C3%A1n-paroli-costa-b71a34263/" target="_blank" class="contact-link">
+    <a href="https://www.linkedin.com/in/juan-sebastian-paroli-costa/" target="_blank" class="contact-link">
       <svg viewBox="0 0 24 24" fill="currentColor">
         <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.447-2.136 2.943v5.663H9.351V9h3.414v1.561h.049c.476-.9 1.637-1.852 3.368-1.852 3.602 0 4.267 2.371 4.267 5.455v6.288zM5.337 7.433a2.063 2.063 0 1 1 0-4.126 2.063 2.063 0 0 1 0 4.126zM7.114 20.452H3.558V9h3.556v11.452zM22.225 0H1.771C.792 0 0 .771 0 1.723v20.554C0 23.229.792 24 1.771 24h20.451C23.2 24 24 23.229 24 22.277V1.723C24 .771 23.2 0 22.222 0h.003z"/>
       </svg>
