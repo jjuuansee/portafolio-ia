@@ -6,3 +6,4 @@ site/
 .ven/
 .Rproj.user
 docs/ingenieria-de-datos/ejercicios/extras/credit-card-fraud-detection/data/creditcard.csv
+kaggle.json

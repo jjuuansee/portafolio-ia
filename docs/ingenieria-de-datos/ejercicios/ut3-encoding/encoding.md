@@ -1,156 +1,199 @@
 ---
-
-title: "Encoding Avanzado"
+title: "Práctica 9 — Target Encoding sobre sueldo de Adultos"
 date: 2025-10-22
 author: "Juan Paroli"
-categories: 
-tags: 
-
 ---
 
-# Target Encoding sobre sueldo de Adultos
+# 💵 Target Encoding sobre sueldo de Adultos: comparando técnicas de encoding para variables categóricas
 
 ## Contexto
 
-En esta práctica se aborda como **predecir** si el ingreso anual de una persona supera 50k$ basándose en datos del censo. Se comparan distintas técnicas de encoding para maximizar la precisión del modelo de clasificación.
+En esta práctica se aborda cómo **predecir** si el ingreso anual de una persona supera 50k$ basándose en datos del censo. El **dataset Adult** abarca un censo del 1994 de Estados Unidos con **32,561 registros**, y es un dataset clásico del Machine Learning y benchmarking. Se comparan distintas técnicas de encoding para maximizar la precisión del modelo de clasificación, explorando las ventajas y limitaciones de cada método según la cardinalidad de las variables categóricas.
 
-El **dataset** abarco un censo del 1994 de Estados Unidos con *32561* registros, y es un dataset clásico del Machine Learningy benchmarking.
+> **Objetivo**: identificar la técnica de encoding más adecuada según la cardinalidad de las variables y demostrar la importancia de prevenir data leakage al usar técnicas como Target Encoding.
 
+Esta práctica fue desarrollada en un notebook de jupyter que puedes encontrar [aquí](nueve.ipynb)
+
+---
 
 ## Objetivos
 
 - [x] Identificar relaciones de las variables con el target.
-- [x] Comparar diferentes tecnicas de encoding.
-- [x] Encontrar restricciones en aplicaciones como OneHotEncoding
+- [x] Comparar diferentes técnicas de encoding (Label, One-Hot, Target Encoding).
+- [x] Encontrar restricciones en aplicaciones como OneHotEncoding para variables de alta cardinalidad.
+- [x] Evaluar el impacto de cada técnica en el rendimiento del modelo.
 
 ---
 
 ## Desarrollo
 
-### 1. Adult Data — Censo estadounidense del 1994
+### 1. Setup y carga de datos
 
 **Setup**
+- Fuente: UCI `adult` (32,561 filas).
+- Librerías: `pandas`, `numpy`, `scikit-learn`, `category_encoders`, `matplotlib`, `seaborn`.
+- Distribución del target:
+  - Menores a 50k de ingresos: **24,720 (75.9%)**
+  - Mayores a 50K de ingresos: **7,841 (24.1%)**
 
-- Fuente: UCI `adult` (32561 filas).
--  menores a 50k de ingresos: 24,720 (75.9%)
--  mayores a 50K de ingresos:  7,841 (24.1%)
+**Proceso**
+- Carga del dataset desde UCI Machine Learning Repository.
+- Análisis inicial de estructura y distribución de clases.
+- Identificación de variables categóricas y numéricas.
 
-**Señales clave**
-- No hay valores faltantes
-
----
+**Resultados clave**
+- **Señales clave**: No hay valores faltantes en el dataset.
+- Dataset desbalanceado con 75.9% de clase mayoritaria (ingresos ≤50k).
+- 8 variables categóricas y 6 variables numéricas identificadas.
 
 ### 2. Análisis de cardinalidad
 
-Variables categóricas encontradas: 8
+**Proceso**
+- Análisis de cada variable categórica para determinar su cardinalidad.
+- Clasificación de variables según cardinalidad (baja, media, alta).
+- Identificación de problemas potenciales con One-Hot Encoding.
+
+**Resultados clave**
+
+Variables categóricas encontradas: **8**
 
 `workclass`, `education`, `marital-status`, `occupation`, `relationship`, `race`, `sex` y `native-country`
 
-A cada variable categórica se le analizó cuantos valores únicos toma para analizar la cardinalidad de cada variable. Si aplicamos OHE a estas columnas podemos tener problemas de dimensionalidad extremos.
-
-**Análisis de cardinalidad**
+**Clasificación de cardinalidad**
 
 Se clasificó la cardinalidad de las features como:
+- **Baja** ≤ 10
+- **Media** 10 < cardinalidad ≤ 40
+- **Alta** > 40
 
-- Baja <= 10
-- 10 < Media <= 40
-- Alta > 40  
-
-Lo que clasificó a las features de esta manera:
-
-- `workclass`: 9 categorías únicas (BAJA)
-- `education`: 16 categorías únicas (MEDIA)
-- `marital-status`: 7 categorías únicas (BAJA)
-- `occupation`: 15 categorías únicas (MEDIA)
-- `relationship`: 6 categorías únicas (BAJA)
-- `race`: 5 categorías únicas (BAJA)
-- `sex`: 2 categorías únicas (BAJA)
-- `native-country`: 42 categorías únicas (ALTA)
-
+**Distribución de variables por cardinalidad**:
+- `workclass`: **9 categorías únicas** (BAJA)
+- `education`: **16 categorías únicas** (MEDIA)
+- `marital-status`: **7 categorías únicas** (BAJA)
+- `occupation`: **15 categorías únicas** (MEDIA)
+- `relationship`: **6 categorías únicas** (BAJA)
+- `race`: **5 categorías únicas** (BAJA)
+- `sex`: **2 categorías únicas** (BAJA)
+- `native-country`: **42 categorías únicas** (ALTA)
 
 **Problema de dimensionalidad con OneHotEncoding**:
 
-- workclass: 9 categorías → 8 columnas one-hot
-- education: 16 categorías → 15 columnas one-hot
-- marital-status: 7 categorías → 6 columnas one-hot
-- occupation: 15 categorías → 14 columnas one-hot
-- relationship: 6 categorías → 5 columnas one-hot
-- race: 5 categorías → 4 columnas one-hot
-- sex: 2 categorías → 1 columnas one-hot
-- native-country: 42 categorías → 41 columnas one-hot
+- workclass: 9 categorías → **8 columnas one-hot**
+- education: 16 categorías → **15 columnas one-hot**
+- marital-status: 7 categorías → **6 columnas one-hot**
+- occupation: 15 categorías → **14 columnas one-hot**
+- relationship: 6 categorías → **5 columnas one-hot**
+- race: 5 categorías → **4 columnas one-hot**
+- sex: 2 categorías → **1 columna one-hot**
+- native-country: 42 categorías → **41 columnas one-hot**
 
-One-hot encoding **NO** es viable para variables de alta cardinalidad (como aparece en este dataset). Por lo tanto, necesitamos técnicas alternativas:
+**Total**: ~94 columnas adicionales solo para variables categóricas.
 
-- Label
-- Target
-- Hash
-- Binary encoding
+One-hot encoding **NO** es viable para variables de alta cardinalidad (como `native-country`). Por lo tanto, necesitamos técnicas alternativas:
+- **Label Encoding**
+- **Target Encoding**
+- **Hash Encoding**
+- **Binary Encoding**
 
 ![](results/cardinal-analisis.png)
 
 ### 3. Label Encoding
 
-Aplicamos Label Encoding para las columnas categóricas y luego evaluamos el performance al utilizar RandomForest
+**Setup**
+- Técnica: Label Encoding aplicado a todas las variables categóricas.
+- Modelo: RandomForestClassifier.
+- Métricas: Accuracy, AUC-ROC, F1-Score.
 
-Label Encoding aplicado a 14 features. Los resultados obtenidos fueron:
+**Proceso**
+- Aplicación de Label Encoding a 8 variables categóricas.
+- Entrenamiento de RandomForest con todas las features.
+- Evaluación del rendimiento del modelo.
 
-- 📊 Accuracy: 0.8632
-- 📊 AUC-ROC: 0.9101
-- 📊 F1-Score: 0.6931
-- ⏱️ Training time: 0.77s
+**Resultados clave**
 
-### 4. OHE para features con baja cardinalidad
+Label Encoding aplicado a **8 features categóricas**. Los resultados obtenidos fueron:
 
-Tambien aplicamos OneHotEncoding únicamente a las variables con baja cardinalidad. Por el problema de dimensionalidad que mencionamos de OHE. Y posteriormente entrenamos un Random Forest.
+- 📊 **Accuracy**: **0.8632**
+- 📊 **AUC-ROC**: **0.9101**
+- 📊 **F1-Score**: **0.6931**
+- ⏱️ **Training time**: **0.77s**
+
+**Ventajas**: Simple, rápido, no aumenta la dimensionalidad.
+
+**Desventajas**: Puede introducir relaciones ordinales artificiales entre categorías que no la tienen.
+
+### 4. One-Hot Encoding para features con baja cardinalidad
+
+**Setup**
+- Técnica: One-Hot Encoding aplicado únicamente a variables con baja cardinalidad.
+- Modelo: RandomForestClassifier.
+- Justificación: Evitar explosión dimensional con variables de alta cardinalidad.
+
+**Proceso**
+- Identificación de variables con baja cardinalidad (≤10).
+- Aplicación de OHE solo a estas variables.
+- Entrenamiento y evaluación del modelo.
+
+**Resultados clave**
 
 Los resultados obtenidos son levemente peores en comparación a Label Encoding:
 
+- 📊 **Accuracy**: **0.8483**
+- 📊 **AUC-ROC**: **0.8995**
+- 📊 **F1-Score**: **0.6633**
+- ⏱️ **Training time**: **0.67s**
 
-- 📊 Accuracy: 0.8483
-- 📊 AUC-ROC: 0.8995
-- 📊 F1-Score: 0.6633
-- ⏱️  Training time: 0.67s
-
+**Análisis**: Aunque OHE mantiene la interpretabilidad, no mejora el rendimiento en este caso y aumenta la dimensionalidad.
 
 ### 5. Target Encoding con alta cardinalidad
 
-Para la feature con alta cardinalidad `native-country` aplicamos Target Encoding. Con esta técnica es importante el uso de cross-validation para prevenir DATA LEAKAGE.
+**Setup**
+- Técnica: Target Encoding aplicado a `native-country` (alta cardinalidad).
+- Prevención de leakage: Uso de cross-validation para prevenir data leakage.
+- Modelo: RandomForestClassifier.
 
-Entrenamos un Random Forest nuevamente y estos fueron los resultados obtenidos:
+**Proceso**
+- Aplicación de Target Encoding a `native-country` con validación cruzada.
+- Combinación con otras técnicas de encoding para variables de baja/media cardinalidad.
+- Entrenamiento y evaluación del modelo.
 
-- 📊 Accuracy: 0.8092
-- 📊 AUC-ROC: 0.8318
-- 📊 F1-Score: 0.5658
-- ⏱️  Training time: 1.63s
+**Resultados clave**
 
-### 6. Analisis de Feature Importance
+Entrenamos un Random Forest y estos fueron los resultados obtenidos:
 
-Luego de analizar las distintas tencicas de encoding con las features de baja y alta cardinalidad, aplicamos un Pipeline con branching de 3 ramas:
+- 📊 **Accuracy**: **0.8092**
+- 📊 **AUC-ROC**: **0.8318**
+- 📊 **F1-Score**: **0.5658**
+- ⏱️ **Training time**: **1.63s**
 
-- Rama 1: One-Hot para baja cardinalidad (5 cols)
-- Rama 2: Target Encoding para alta cardinalidad (1 cols)
-- Rama 3: StandardScaler para numéricas (6 cols)
+**Análisis**: Target Encoding resultó útil pero menos destacable aquí por la ausencia de columnas con muchas categorías realmente problemáticas. El tiempo de entrenamiento aumentó debido al proceso de cross-validation.
 
-Este Pipeline generaba una cantidad de columnas nuevas considerable, sabiendo que partíamos de un todal de **12** Features originales. La transformación generó un total de **31** features que se puede considerar de **dimensionalidad media**.
+### 6. Análisis de Feature Importance con Pipeline Branching
+
+**Setup**
+- Pipeline con branching de 3 ramas:
+  - Rama 1: One-Hot para baja cardinalidad (5 cols)
+  - Rama 2: Target Encoding para alta cardinalidad (1 col)
+  - Rama 3: StandardScaler para numéricas (6 cols)
+- Modelo: RandomForestClassifier.
+
+**Proceso**
+- Implementación de pipeline modular con ColumnTransformer.
+- Entrenamiento del modelo con todas las transformaciones.
+- Análisis de importancia de features.
+
+**Resultados clave**
+
+Este Pipeline generaba una cantidad de columnas nuevas considerable. Partiendo de un total de **12 Features originales**, la transformación generó un total de **31 features** que se puede considerar de **dimensionalidad media**.
 
 Entrenamos un Random Forest con estas Features y los resultados obtenidos fueron:
 
-- 📊 Accuracy: 0.8488
-- 📊 AUC-ROC: 0.9021
-- 📊 F1-Score: 0.6671
-- ⏱️  Training time: 2.08s
+- 📊 **Accuracy**: **0.8488**
+- 📊 **AUC-ROC**: **0.9021**
+- 📊 **F1-Score**: **0.6671**
+- ⏱️ **Training time**: **2.08s**
 
-Las columnas con más importancia en el entrenamiento del Random Fores fueron:
-
-
-📊 Analizando modelo con Pipeline Branching...
-✅ Features extraídas: 30
-🔝 Top Features más importantes:
-
-📊 Analizando modelo con Pipeline Branching...
-✅ Features extraídas: 30
-
-🔝 Top Features (feature importance)
+**Top Features (feature importance)**
 
 | Rank | Feature                  | Importance |
 |-----:|:-------------------------|-----------:|
@@ -162,89 +205,117 @@ Las columnas con más importancia en el entrenamiento del Random Fores fueron:
 
 ![](results/feature_importance.png)
 
-
+**Análisis de resultados**
 
 Las **variables más importantes** según el análisis de feature importance fueron principalmente **numéricas**, destacándose:
-
-- fnlwgt
-- age
-- education-num
-- capital-gain
-- hours-per-week.
+- `fnlwgt`
+- `age`
+- `education-num`
+- `capital-gain`
+- `hours-per-week`
 
 Estas concentraron más del **75% de la importancia total del modelo**, lo que muestra que las variables continuas aportan la mayor capacidad predictiva sobre los ingresos.
 
-No hubo variables de alta cardinalidad (target encoded) relevantes en este caso, ya que el dataset Adult Income prácticamente no contenía variables de ese tipo (todas eran de baja o media cardinalidad).
+**Hallazgo importante**: No hubo variables de alta cardinalidad (target encoded) relevantes en este caso, ya que el dataset Adult Income prácticamente no contenía variables realmente problemáticas en términos de cardinalidad.
 
-El tipo de codificación influye directamente en cómo el modelo interpreta la información:
-
-- One-Hot Encoding logró capturar bien la información de variables con baja cardinalidad, manteniendo buena interpretabilidad, pero **aumenta la dimensionalidad** (≈11× más columnas).
-- Label Encoding generó resultados sólidos y simples, aunque puede introducir una relación ordinal artificial entre categorías que no la tienen.
-- Target Encoding, aplicado a las de mayor cardinalidad, resultó útil pero menos destacable aquí por la ausencia de columnas con muchas categorías.
-- En términos de métricas, las diferencias fueron pequeñas, aunque Label Encoding y Branched Pipeline mostraron un mejor balance entre rendimiento y eficiencia.
-
-Las variables numéricas originales dominaron claramente al modelo, tanto en importancia total como promedio.
-
-Esto sugiere que, en este dataset, la información estructural y cuantitativa (edad, años de educación, capital, horas trabajadas) es mucho más informativa que las categorías sociales o demográficas.
-
-Las variables numéricas (age, education-num, capital-gain, hours-per-week) continúan siendo las más influyentes sobre la probabilidad de tener ingresos mayores a 50K.
-
-SHAP también muestra que las interacciones entre sex y marital-status influyen levemente, reflejando sesgos estructurales (por ejemplo, hombres casados tienden a tener mayor probabilidad de alto ingreso).
-
-No aparecen nuevas features altamente relevantes que el Random Forest haya ignorado, lo cual indica consistencia entre ambas metodologías.
-
-**Desde una perspectiva analítica y de negocio:**
-
+**Desde una perspectiva analítica y de negocio**:
 - Los factores que más predicen el ingreso son edad, nivel educativo, tipo de empleo y capital acumulado, lo que coincide con patrones socioeconómicos reales.
 - Las categorías relacionadas con el estado civil también inciden, lo que puede reflejar correlaciones indirectas con estabilidad laboral o responsabilidades familiares.
-- No se detectaron variables categóricas con alta cardinalidad que aporten valor adicional.
 - Para aplicaciones prácticas, esto implica que los modelos predictivos de ingresos pueden simplificarse priorizando las variables numéricas, reduciendo complejidad sin perder rendimiento.
 - Además, es importante considerar posibles sesgos de género o de relación familiar, ya que el modelo podría reproducir desigualdades presentes en los datos originales del censo.
 
 ---
 
-## Reflexión
+## 📁 Evidencias
 
-El experimento sobre **encoding avanzado** en el dataset *Adult Income* pone de manifiesto una verdad recurrente en proyectos reales de Machine Learning: **no siempre la complejidad en la representación de los datos garantiza un mejor rendimiento del modelo**.
+### Análisis de cardinalidad
 
-A pesar de probar estrategias de codificación más elaboradas —como *Target Encoding* o *branching pipelines*—, los resultados muestran que las **variables numéricas** (edad, años de educación, capital y horas trabajadas) concentran la mayor parte del poder predictivo. Este hallazgo coincide con una característica estructural del problema: la desigualdad de ingresos responde en gran medida a factores cuantificables y menos a categorías cualitativas.
+**Visualización de cardinalidad por variable categórica**
 
-La comparación entre métodos de codificación deja varias lecciones:
+![](results/cardinal-analisis.png)
 
-1. **Label Encoding** emerge como una opción eficiente y estable cuando el modelo no asume relaciones lineales estrictas (como los árboles de decisión). Su simplicidad evita la explosión dimensional y mantiene una excelente capacidad predictiva.
-2. **One-Hot Encoding** es útil en variables de baja cardinalidad y mantiene interpretabilidad, aunque penaliza en escalabilidad y rendimiento cuando el número de categorías crece.
-3. **Target Encoding**, si bien teóricamente más informativo para variables de alta cardinalidad, requiere una estructura de datos más compleja y un manejo cuidadoso del *data leakage*. En este caso, la falta de columnas realmente “altas” en cardinalidad limitó su aporte.
-4. **Pipelines combinados (branching)** aportan modularidad y reproducibilidad, pero su ventaja práctica solo se justifica en escenarios con estructuras mixtas de datos o cardinalidades extremas.
+### Análisis de importancia de features
 
-Este estudio demuestra que la **selección de técnicas de encoding** debe guiarse por la naturaleza de los datos y no por la sofisticación del método. En datasets con predominio de variables numéricas y categóricas de baja cardinalidad, una arquitectura simple —como Label Encoding o una combinación controlada con OHE— logra un balance óptimo entre interpretabilidad, costo computacional y precisión.
+**Top features según importancia**
 
-> **La clave no está en usar el encoding más avanzado, sino en usar el más adecuado.**
-> La explicabilidad, la alineación con el contexto del negocio y la prevención del sobreajuste son tan importantes como la métrica final de performance.
+![](results/feature_importance.png)
+
+### Código de ejemplo: Pipeline con Branching
+
+```python
+from sklearn.compose import ColumnTransformer
+from sklearn.preprocessing import StandardScaler, OneHotEncoder
+from category_encoders import TargetEncoder
+from sklearn.ensemble import RandomForestClassifier
+from sklearn.pipeline import Pipeline
+
+# Definir transformadores por tipo
+preprocessor = ColumnTransformer(
+    transformers=[
+        ('onehot', OneHotEncoder(), low_cardinality_features),
+        ('target', TargetEncoder(), high_cardinality_features),
+        ('scaler', StandardScaler(), numeric_features)
+    ]
+)
+
+# Pipeline completo
+pipeline = Pipeline([
+    ('preprocessor', preprocessor),
+    ('model', RandomForestClassifier())
+])
+```
 
 ---
 
+## 💡 Reflexión
+
+### Aprendizajes clave
+
+- **No siempre la complejidad garantiza mejor rendimiento**: A pesar de probar estrategias de codificación más elaboradas (Target Encoding, branching pipelines), los resultados muestran que las **variables numéricas** concentran la mayor parte del poder predictivo.
+- **Label Encoding emerge como opción eficiente**: Cuando el modelo no asume relaciones lineales estrictas (como los árboles de decisión), Label Encoding evita la explosión dimensional y mantiene una excelente capacidad predictiva.
+- **One-Hot Encoding es útil pero limitado**: Es útil en variables de baja cardinalidad y mantiene interpretabilidad, aunque penaliza en escalabilidad cuando el número de categorías crece.
+- **Target Encoding requiere manejo cuidadoso**: Si bien teóricamente más informativo para variables de alta cardinalidad, requiere una estructura de datos más compleja y un manejo cuidadoso del data leakage mediante cross-validation.
+- **Pipelines combinados aportan modularidad**: Los pipelines con branching aportan modularidad y reproducibilidad, pero su ventaja práctica solo se justifica en escenarios con estructuras mixtas de datos o cardinalidades extremas.
+
+### Limitaciones y desafíos
+
+- **El dataset no tenía variables realmente problemáticas**: La falta de columnas con cardinalidad extremadamente alta limitó la demostración del valor de Target Encoding.
+- **Variables numéricas dominan**: Las variables numéricas originales dominaron claramente el modelo, tanto en importancia total como promedio, limitando el impacto de las técnicas de encoding.
+- **Trade-off entre complejidad y rendimiento**: En términos de métricas, las diferencias fueron pequeñas entre métodos, lo que sugiere que la complejidad adicional no siempre se justifica.
+
+### Próximos pasos
+
+- Explorar otros métodos de encoding (Hash Encoding, Binary Encoding, Entity Embeddings).
+- Probar con datasets que tengan variables de cardinalidad extremadamente alta.
+- Evaluar el impacto de encoding en modelos lineales (que son más sensibles a la representación de variables categóricas).
+- Investigar técnicas de embedding para variables categóricas de alta cardinalidad.
+
+!!! warning "Atención"
+    **La clave no está en usar el encoding más avanzado, sino en usar el más adecuado.** La explicabilidad, la alineación con el contexto del negocio y la prevención del sobreajuste son tan importantes como la métrica final de performance.
+
+---
 
 ## 📚 Referencias
 
-- **Dua, D., & Graff, C. (2019).** *UCI Machine Learning Repository — Adult Data Set.* University of California, Irvine.
+- **Dua, D., & Graff, C. (2019)**. *UCI Machine Learning Repository — Adult Data Set.* University of California, Irvine.
   [https://archive.ics.uci.edu/ml/datasets/adult](https://archive.ics.uci.edu/ml/datasets/adult)
 
-- **Micci-Barreca, D. (2001).** *A Preprocessing Scheme for High-Cardinality Categorical Attributes in Classification and Prediction Problems.* SIGKDD Explorations, 3(1), 27–32.
- 
-- **Lemaître, G., Nogueira, F., & Aridas, C. K. (2017).** *Imbalanced-learn: A Python Toolbox to Tackle the Curse of Imbalanced Datasets in Machine Learning.* Journal of Machine Learning Research, 18(17), 1–5.
+- **Micci-Barreca, D. (2001)**. *A Preprocessing Scheme for High-Cardinality Categorical Attributes in Classification and Prediction Problems.* SIGKDD Explorations, 3(1), 27–32.
 
-- **Scikit-learn Developers (2024).** *User Guide: Encoding categorical features.*
+- **Lemaître, G., Nogueira, F., & Aridas, C. K. (2017)**. *Imbalanced-learn: A Python Toolbox to Tackle the Curse of Imbalanced Datasets in Machine Learning.* Journal of Machine Learning Research, 18(17), 1–5.
+
+- **Scikit-learn Developers (2024)**. *User Guide: Encoding categorical features.*
   [https://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features](https://scikit-learn.org/stable/modules/preprocessing.html#encoding-categorical-features)
 
-- **Category Encoders (2017–2024).** *Official Documentation — TargetEncoder, OrdinalEncoder, OneHotEncoder.*
+- **Category Encoders (2017–2024)**. *Official Documentation — TargetEncoder, OrdinalEncoder, OneHotEncoder.*
   [https://contrib.scikit-learn.org/category_encoders/](https://contrib.scikit-learn.org/category_encoders/)
 
-- **Lundberg, S. M., & Lee, S.-I. (2017).** *A Unified Approach to Interpreting Model Predictions (SHAP).* Advances in Neural Information Processing Systems (NeurIPS).
+- **Lundberg, S. M., & Lee, S.-I. (2017)**. *A Unified Approach to Interpreting Model Predictions (SHAP).* Advances in Neural Information Processing Systems (NeurIPS).
   [https://arxiv.org/abs/1705.07874](https://arxiv.org/abs/1705.07874)
-  
-- **Kaggle (2023).** *Adult Census Income Prediction — Benchmark Notebook.*
+
+- **Kaggle (2023)**. *Adult Census Income Prediction — Benchmark Notebook.*
   [https://www.kaggle.com/uciml/adult-census-income](https://www.kaggle.com/uciml/adult-census-income)
 
-- [Notebook Completo](nueve.ipynb)
+- **Notebook completo**: [nueve.ipynb](nueve.ipynb)
 
 ---

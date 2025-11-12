@@ -512,6 +512,42 @@ hide:
       </span>
     </a>
     
+    <a href="ut3-pca/pca/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut3">UT3</span>
+        <span class="exercise-card-badge">#10</span>
+        <h3 class="exercise-card-title">🔍 PCA y Feature Selection: Optimizando modelos de precios inmobiliarios</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Técnicas de reducción de dimensionalidad y selección de variables. Aplicación de PCA, métodos Filter, Wrapper y Embedded para optimizar modelos de precios inmobiliarios.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+    <a href="ut3-temporal-feature-engineering/temporal_fe/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut3">UT3</span>
+        <span class="exercise-card-badge">#11</span>
+        <h3 class="exercise-card-title">⏰ Temporal Features: Extracción y Análisis de Variables Temporales</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Análisis temporal de comportamiento de usuarios y creación de features derivadas. Exploración de patrones temporales en transacciones y creación de variables que representen frecuencia, recurrencia y hábitos de usuarios.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
   </div>
 </div>
 
