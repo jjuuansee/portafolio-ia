@@ -501,7 +501,7 @@ html {
   </div>
   
   <div class="hero-card">
-    <img src="/assets/imgs/juanse.jpg" alt="Juan Paroli" />
+    <img src="assets/imgs/juanse.jpg" alt="Juan Paroli" />
     <h3>Juan Sebastián Paroli Costa</h3>
     <p>Data Science • ML • Analytics</p>
   </div>
