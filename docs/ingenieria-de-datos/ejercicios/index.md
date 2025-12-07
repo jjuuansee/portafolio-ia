@@ -45,6 +45,11 @@ hide:
   background: rgba(236, 72, 153, 0.05);
 }
 
+.unit-section.unit-5 {
+  border-color: #06b6d4;
+  background: rgba(6, 182, 212, 0.05);
+}
+
 .unit-section.unit-extra {
   border-color: #f59e0b;
   background: rgba(245, 158, 11, 0.05);
@@ -64,6 +69,10 @@ hide:
 
 [data-md-color-scheme="slate"] .unit-section.unit-4 {
   background: rgba(236, 72, 153, 0.1);
+}
+
+[data-md-color-scheme="slate"] .unit-section.unit-5 {
+  background: rgba(6, 182, 212, 0.1);
 }
 
 [data-md-color-scheme="slate"] .unit-section.unit-extra {
@@ -106,6 +115,11 @@ hide:
 
 .unit-badge.ut4 {
   background: #ec4899;
+  color: white;
+}
+
+.unit-badge.ut5 {
+  background: #06b6d4;
   color: white;
 }
 
@@ -216,6 +230,12 @@ hide:
   border: 1px solid rgba(236, 72, 153, 0.3);
 }
 
+.exercise-card-unit-badge.ut5 {
+  background: rgba(6, 182, 212, 0.15);
+  color: #06b6d4;
+  border: 1px solid rgba(6, 182, 212, 0.3);
+}
+
 .exercise-card-unit-badge.extra {
   background: rgba(245, 158, 11, 0.15);
   color: #f59e0b;
@@ -240,6 +260,11 @@ hide:
 [data-md-color-scheme="slate"] .exercise-card-unit-badge.ut4 {
   background: rgba(236, 72, 153, 0.2);
   border-color: rgba(236, 72, 153, 0.4);
+}
+
+[data-md-color-scheme="slate"] .exercise-card-unit-badge.ut5 {
+  background: rgba(6, 182, 212, 0.2);
+  border-color: rgba(6, 182, 212, 0.4);
 }
 
 [data-md-color-scheme="slate"] .exercise-card-unit-badge.extra {
@@ -629,6 +654,53 @@ hide:
       </div>
       <p class="exercise-card-description">
         Procesamiento y análisis de datos de audio. Extracción de características, espectrogramas, MFCCs y preparación de features para clasificación de sonido.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+  </div>
+</div>
+
+<div class="unit-section unit-5">
+  <h2 class="unit-title">
+    <span class="unit-badge ut5">UT5</span>
+    <span>Unidad 5 · Cloud & Pipelines</span>
+  </h2>
+  
+  <div class="exercises-grid">
+    
+    <a href="ut5-google_cloud/15-google_cloud_skills/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut5">UT5</span>
+        <span class="exercise-card-badge">#15</span>
+        <h3 class="exercise-card-title">🔓☁️ Google Cloud Desbloqueado: Hands-on Labs</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Introducción a Google Cloud Platform. Cloud Console, proyectos, IAM, habilitación de APIs y estructura de labs en Google Cloud Skills Boost.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+    <a href="ut5-data_transformation/16-data_transformation_pipeline/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut5">UT5</span>
+        <span class="exercise-card-badge">#16</span>
+        <h3 class="exercise-card-title">📊⚙️ Pipeline de Transformación de Datos con Cloud Dataprep</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Preparación y enriquecimiento de datos con Cloud Dataprep. Pipeline BigQuery → Dataprep → Dataflow → BigQuery para limpieza y transformación visual de datos.
       </p>
       <span class="exercise-card-link">
         Ver ejercicio
