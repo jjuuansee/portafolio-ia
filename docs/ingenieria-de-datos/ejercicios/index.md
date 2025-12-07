@@ -40,6 +40,11 @@ hide:
   background: rgba(139, 92, 246, 0.05);
 }
 
+.unit-section.unit-4 {
+  border-color: #ec4899;
+  background: rgba(236, 72, 153, 0.05);
+}
+
 .unit-section.unit-extra {
   border-color: #f59e0b;
   background: rgba(245, 158, 11, 0.05);
@@ -55,6 +60,10 @@ hide:
 
 [data-md-color-scheme="slate"] .unit-section.unit-3 {
   background: rgba(139, 92, 246, 0.1);
+}
+
+[data-md-color-scheme="slate"] .unit-section.unit-4 {
+  background: rgba(236, 72, 153, 0.1);
 }
 
 [data-md-color-scheme="slate"] .unit-section.unit-extra {
@@ -92,6 +101,11 @@ hide:
 
 .unit-badge.ut3 {
   background: #8b5cf6;
+  color: white;
+}
+
+.unit-badge.ut4 {
+  background: #ec4899;
   color: white;
 }
 
@@ -196,6 +210,12 @@ hide:
   border: 1px solid rgba(139, 92, 246, 0.3);
 }
 
+.exercise-card-unit-badge.ut4 {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
 .exercise-card-unit-badge.extra {
   background: rgba(245, 158, 11, 0.15);
   color: #f59e0b;
@@ -215,6 +235,11 @@ hide:
 [data-md-color-scheme="slate"] .exercise-card-unit-badge.ut3 {
   background: rgba(139, 92, 246, 0.2);
   border-color: rgba(139, 92, 246, 0.4);
+}
+
+[data-md-color-scheme="slate"] .exercise-card-unit-badge.ut4 {
+  background: rgba(236, 72, 153, 0.2);
+  border-color: rgba(236, 72, 153, 0.4);
 }
 
 [data-md-color-scheme="slate"] .exercise-card-unit-badge.extra {
@@ -539,6 +564,71 @@ hide:
       </div>
       <p class="exercise-card-description">
         Análisis temporal de comportamiento de usuarios y creación de features derivadas. Exploración de patrones temporales en transacciones y creación de variables que representen frecuencia, recurrencia y hábitos de usuarios.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+  </div>
+</div>
+
+<div class="unit-section unit-4">
+  <h2 class="unit-title">
+    <span class="unit-badge ut4">UT4</span>
+    <span>Unidad 4 · Datos No Estructurados</span>
+  </h2>
+  
+  <div class="exercises-grid">
+    
+    <a href="ut4-geo_data/12-geo_data/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut4">UT4</span>
+        <span class="exercise-card-badge">#12</span>
+        <h3 class="exercise-card-title">🗺️ Análisis geoespacial con GeoPandas: proyecciones, coropletas y cobertura SUBTE</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Análisis geoespacial de Buenos Aires con GeoPandas. Proyecciones cartográficas, mapas coropléticos, indicadores per cápita y análisis de cobertura del transporte público.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+    <a href="ut4-images_preprocessing/13-image_preprocessing/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut4">UT4</span>
+        <span class="exercise-card-badge">#13</span>
+        <h3 class="exercise-card-title">🖼️ Preprocesamiento de Imágenes para Machine Learning</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Técnicas de preprocesamiento de imágenes. Normalización, redimensionamiento, augmentación y preparación de datos para modelos de visión por computadora.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+    <a href="ut4-audio_as_data/14-audio_preprocessing/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut4">UT4</span>
+        <span class="exercise-card-badge">#14</span>
+        <h3 class="exercise-card-title">🎵 Audio como Datos: Extracción de Features y Análisis</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Procesamiento y análisis de datos de audio. Extracción de características, espectrogramas, MFCCs y preparación de features para clasificación de sonido.
       </p>
       <span class="exercise-card-link">
         Ver ejercicio
