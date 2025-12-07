@@ -741,6 +741,42 @@ hide:
       </span>
     </a>
     
+    <a href="extras/streamlit-dashboard/streamlit_dashboard/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge extra">Extra</span>
+        <span class="exercise-card-badge">#2</span>
+        <h3 class="exercise-card-title">📊 Dashboard Interactivo con Streamlit</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Desarrollo de dashboards interactivos con Streamlit. Filtros dinámicos, visualizaciones con Plotly, métricas en tiempo real y despliegue de aplicaciones web de datos.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+    <a href="extras/web-scraping/web_scraping/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge extra">Extra</span>
+        <span class="exercise-card-badge">#3</span>
+        <h3 class="exercise-card-title">🕷️ Web Scraping de Datos con Python</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Extracción de datos de sitios web con BeautifulSoup y requests. Parsing de HTML, manejo de paginación, tablas y buenas prácticas de scraping ético.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
   </div>
 </div>
 
