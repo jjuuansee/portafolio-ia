@@ -710,6 +710,24 @@ hide:
       </span>
     </a>
     
+    <a href="ut5-prefect/15-practica_final/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut5">UT5</span>
+        <span class="exercise-card-badge">#17</span>
+        <h3 class="exercise-card-title">🔄 Orquestando pipelines de datos: del código al flujo con Prefect</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Diseño e implementación de pipelines ETL con Prefect. Tasks, Flows, DAGs implícitos, retries, caching, validación de datos y principios de DataOps.
+      </p>
+      <span class="exercise-card-link">
+        Ver ejercicio
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
   </div>
 </div>
 
