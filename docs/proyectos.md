@@ -1,6 +1,6 @@
 ---
 title: "Proyectos"
-date: 2025-10-23
+date: 2026-01-12
 author: "Juan Paroli"
 hide:
     - navigation
@@ -17,179 +17,231 @@ hide:
   max-width: 800px;
 }
 
-.projects-section-title {
-  font-size: 1.75rem;
+/* Unit Section Styles */
+.unit-section {
+  margin: 3rem 0;
+  padding: 1.5rem;
+  border-radius: 12px;
+  border: 2px solid;
+  background: var(--md-default-bg-color);
+}
+
+.unit-section.unit-1 {
+  border-color: #3b82f6;
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.unit-section.unit-4 {
+  border-color: #ec4899;
+  background: rgba(236, 72, 153, 0.05);
+}
+
+[data-md-color-scheme="slate"] .unit-section.unit-1 {
+  background: rgba(59, 130, 246, 0.1);
+}
+
+[data-md-color-scheme="slate"] .unit-section.unit-4 {
+  background: rgba(236, 72, 153, 0.1);
+}
+
+.unit-title {
+  font-size: 1.5rem;
   font-weight: 600;
-  margin: 3rem 0 1.5rem 0;
+  margin: 0 0 1.5rem 0;
   color: var(--md-default-fg-color);
   display: flex;
   align-items: center;
   gap: 0.75rem;
 }
 
-.projects-section-title:first-of-type {
-  margin-top: 2rem;
+.unit-badge {
+  padding: 0.4rem 1rem;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: white;
 }
 
-.projects-grid {
+.unit-badge.ut1 { background: #3b82f6; }
+.unit-badge.ut4 { background: #ec4899; }
+
+/* Exercise Card Styles */
+.exercises-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: 1fr;
+  gap: 1rem;
   margin: 2rem 0;
 }
 
-.project-card {
+.exercise-card {
   background: var(--md-default-bg-color);
   border: 1px solid var(--md-default-fg-color--lighter);
   border-radius: 12px;
-  padding: 1.5rem;
+  padding: 1rem 1.25rem;
   transition: all 0.3s ease;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
-  display: flex;
-  flex-direction: column;
+  text-decoration: none;
+  display: block;
   position: relative;
   overflow: hidden;
 }
 
-.project-card::before {
+.exercise-card::before {
   content: '';
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
-  height: 4px;
+  height: 3px;
   background: linear-gradient(90deg, var(--md-primary-fg-color), var(--md-primary-fg-color--dark));
   transform: scaleX(0);
   transform-origin: left;
   transition: transform 0.3s ease;
 }
 
-.project-card:hover::before {
+.exercise-card:hover::before {
   transform: scaleX(1);
 }
 
-.project-card:hover {
+.exercise-card:hover {
   transform: translateY(-4px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
   border-color: var(--md-primary-fg-color);
 }
 
-[data-md-color-scheme="slate"] .project-card {
+[data-md-color-scheme="slate"] .exercise-card {
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
 }
 
-[data-md-color-scheme="slate"] .project-card:hover {
+[data-md-color-scheme="slate"] .exercise-card:hover {
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
 }
 
-.project-card-header {
+.exercise-card-header {
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  margin-bottom: 1rem;
-}
-
-.project-card-icon {
-  font-size: 1.75rem;
-  line-height: 1;
-}
-
-.project-card-title {
-  margin: 0;
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.project-card-title a {
-  color: var(--md-default-fg-color);
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.project-card:hover .project-card-title a {
-  color: var(--md-primary-fg-color);
-}
-
-.project-card-description {
-  color: var(--md-default-fg-color--light);
-  line-height: 1.6;
-  margin-bottom: 1rem;
-  flex-grow: 1;
-  font-size: 0.95rem;
-}
-
-.project-card-tags {
-  display: flex;
+  margin-bottom: 0.5rem;
   flex-wrap: wrap;
-  gap: 0.5rem;
-  margin-bottom: 1.25rem;
 }
 
-.project-tag {
-  padding: 0.4rem 0.75rem;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 500;
+.exercise-card-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 12px;
+  font-size: 0.75rem;
+  font-weight: 600;
   background: var(--md-default-bg-color--dark);
   color: var(--md-default-fg-color);
   border: 1px solid var(--md-default-fg-color--lighter);
-  transition: all 0.2s;
 }
 
-.project-card:hover .project-tag {
-  border-color: var(--md-primary-fg-color--lighter);
-  background: var(--md-primary-fg-color--lightest);
+.exercise-card-unit-badge {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
 }
 
-.project-card-button {
+.exercise-card-unit-badge.ut1 {
+  background: rgba(59, 130, 246, 0.15);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+.exercise-card-unit-badge.ut4 {
+  background: rgba(236, 72, 153, 0.15);
+  color: #ec4899;
+  border: 1px solid rgba(236, 72, 153, 0.3);
+}
+
+[data-md-color-scheme="slate"] .exercise-card-unit-badge.ut1 {
+  background: rgba(59, 130, 246, 0.2);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+[data-md-color-scheme="slate"] .exercise-card-unit-badge.ut4 {
+  background: rgba(236, 72, 153, 0.2);
+  border-color: rgba(236, 72, 153, 0.4);
+}
+
+.exercise-card-status {
+  padding: 0.25rem 0.6rem;
+  border-radius: 12px;
+  font-size: 0.7rem;
+  font-weight: 600;
   display: inline-flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  background: var(--md-primary-fg-color);
-  color: white !important;
-  text-decoration: none;
-  border-radius: 8px;
+  gap: 0.25rem;
+}
+
+.exercise-card-status.complete {
+  background: rgba(34, 197, 94, 0.1);
+  color: #22c55e;
+  border: 1px solid rgba(34, 197, 94, 0.3);
+}
+
+.exercise-card-status.inprogress {
+  background: rgba(59, 130, 246, 0.1);
+  color: #3b82f6;
+  border: 1px solid rgba(59, 130, 246, 0.3);
+}
+
+[data-md-color-scheme="slate"] .exercise-card-status.complete {
+  background: rgba(34, 197, 94, 0.15);
+  border-color: rgba(34, 197, 94, 0.4);
+}
+
+[data-md-color-scheme="slate"] .exercise-card-status.inprogress {
+  background: rgba(59, 130, 246, 0.15);
+  border-color: rgba(59, 130, 246, 0.4);
+}
+
+.exercise-card-title {
+  font-size: 1rem;
   font-weight: 600;
-  font-size: 0.9rem;
-  transition: all 0.2s;
-  border: none;
-  cursor: pointer;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  margin: 0;
+  color: var(--md-default-fg-color);
+  flex: 1;
+  line-height: 1.3;
 }
 
-.project-card-button:hover {
-  background: var(--md-primary-fg-color--dark);
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+.exercise-card-description {
+  color: var(--md-default-fg-color--light);
+  line-height: 1.5;
+  font-size: 0.85rem;
+  margin: 0 0 0.75rem 0;
 }
 
-.project-card-button svg {
-  width: 16px;
-  height: 16px;
+.exercise-card-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--md-primary-fg-color);
+  font-weight: 600;
+  font-size: 0.85rem;
+  text-decoration: none;
+  transition: gap 0.2s;
+}
+
+.exercise-card:hover .exercise-card-link {
+  gap: 0.75rem;
+}
+
+.exercise-card-link svg {
+  width: 14px;
+  height: 14px;
   transition: transform 0.2s;
 }
 
-.project-card-button:hover svg {
-  transform: translateX(2px);
-}
-
-.empty-section {
-  padding: 3rem;
-  text-align: center;
-  color: var(--md-default-fg-color--light);
-  font-style: italic;
-  border: 2px dashed var(--md-default-fg-color--lighter);
-  border-radius: 12px;
-  margin: 2rem 0;
+.exercise-card:hover .exercise-card-link svg {
+  transform: translateX(4px);
 }
 
 @media (max-width: 768px) {
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-  
   .projects-intro {
     font-size: 0.9rem;
   }
@@ -202,93 +254,98 @@ hide:
   En esta sección encontrarás los proyectos que he desarrollado durante mi carrera, vinculados a los cursos que he cursado. También puedes acceder a la documentación de los cursos que más marcaron mi desarrollo en la Ciencia de Datos y el Machine Learning.
 </div>
 
-## Prácticas Universitarias
-
-<div class="empty-section">
-  Próximamente: proyectos de prácticas universitarias se agregarán aquí.
+<div class="unit-section unit-1">
+  <h2 class="unit-title">
+    <span class="unit-badge ut1">S1</span>
+    <span>Semestre 1</span>
+  </h2>
+  
+  <div class="exercises-grid">
+    
+    <a href="../semestre-1/programacion-uno/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut1">S1</span>
+        <span class="exercise-card-badge">Programación</span>
+        <h3 class="exercise-card-title">💻 Programación UNO</h3>
+        <span class="exercise-card-status complete">✅ Completo</span>
+      </div>
+      <p class="exercise-card-description">
+        Fundamentos de programación. Estructuras de control, funciones y algoritmos básicos.
+      </p>
+      <span class="exercise-card-link">
+        Ver Curso
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
+    
+  </div>
 </div>
 
-## Cursos académicos
+<div class="unit-section unit-4">
+  <h2 class="unit-title">
+    <span class="unit-badge ut4">S4</span>
+    <span>Semestre 4</span>
+  </h2>
+  
+  <div class="exercises-grid">
+    
+    <a href="../semestre-4/machine-learning/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut4">S4</span>
+        <span class="exercise-card-badge">Machine Learning</span>
+        <h3 class="exercise-card-title">⚙️ Machine Learning</h3>
+        <span class="exercise-card-status inprogress">🔄 En Curso</span>
+      </div>
+      <p class="exercise-card-description">
+        Técnicas de regresión, clasificación y redes neuronales para modelos predictivos.
+      </p>
+      <span class="exercise-card-link">
+        Ver Curso
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
 
-<div class="projects-grid">
+    <a href="../semestre-4/ingenieria-de-datos/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut4">S4</span>
+        <span class="exercise-card-badge">Data Engineering</span>
+        <h3 class="exercise-card-title">💾 Ingeniería de Datos</h3>
+        <span class="exercise-card-status inprogress">🔄 En Curso</span>
+      </div>
+      <p class="exercise-card-description">
+        Feature Engineering, pipelines de datos y buenas prácticas en procesamiento.
+      </p>
+      <span class="exercise-card-link">
+        Ver Curso
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
 
-<div class="project-card">
-  <div class="project-card-header">
-    <span class="project-card-icon">⚙️</span>
-    <h3 class="project-card-title">
-      <a href="../machine-learning/">Machine Learning</a>
-    </h3>
-  </div>
-  <p class="project-card-description">
-    Curso de Aprendizaje Automático dictado en el segundo semestre de 2025. 
-    Explora técnicas de regresión, clasificación y redes neuronales para construir 
-    modelos predictivos.
-  </p>
-  <div class="project-card-tags">
-    <span class="project-tag">Regresión</span>
-    <span class="project-tag">Clasificación</span>
-    <span class="project-tag">Predicción</span>
-    <span class="project-tag">Redes Neuronales</span>
-  </div>
-  <a href="../machine-learning/" class="project-card-button">
-    Abrir Curso
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-    </svg>
-  </a>
-</div>
+    <a href="../semestre-4/algabo/" class="exercise-card">
+      <div class="exercise-card-header">
+        <span class="exercise-card-unit-badge ut4">S4</span>
+        <span class="exercise-card-badge">Algoritmos</span>
+        <h3 class="exercise-card-title">🔍 Algabo</h3>
+        <span class="exercise-card-status inprogress">🔄 En Curso</span>
+      </div>
+      <p class="exercise-card-description">
+        Algoritmos avanzados de búsqueda y optimización. Estructuras de datos complejas.
+      </p>
+      <span class="exercise-card-link">
+        Ver Curso
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+        </svg>
+      </span>
+    </a>
 
-<div class="project-card">
-  <div class="project-card-header">
-    <span class="project-card-icon">💾</span>
-    <h3 class="project-card-title">
-      <a href="../ingenieria-de-datos/">Ingeniería de Datos</a>
-    </h3>
   </div>
-  <p class="project-card-description">
-    Curso dedicado al Feature Engineering dictado en el segundo semestre del 2025. 
-    Aprende a construir pipelines de datos, realizar feature engineering y aplicar 
-    buenas prácticas en procesamiento de datos.
-  </p>
-  <div class="project-card-tags">
-    <span class="project-tag">Feature Engineering</span>
-    <span class="project-tag">Pipeline</span>
-    <span class="project-tag">Data Science</span>
-    <span class="project-tag">Data Engineering</span>
-  </div>
-  <a href="../ingenieria-de-datos/" class="project-card-button">
-    Abrir Curso
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-    </svg>
-  </a>
-</div>
-
-<div class="project-card">
-  <div class="project-card-header">
-    <span class="project-card-icon">🔍</span>
-    <h3 class="project-card-title">
-      <a href="../algabo/">Algabo</a>
-    </h3>
-  </div>
-  <p class="project-card-description">
-    Curso de Algoritmos Avanzados de Búsqueda y Optimización dictado en el segundo 
-    semestre del 2025. Estudia algoritmos de búsqueda, optimización y estructuras 
-    de datos avanzadas.
-  </p>
-  <div class="project-card-tags">
-    <span class="project-tag">Algoritmos</span>
-    <span class="project-tag">Árboles</span>
-    <span class="project-tag">Estructuras de Datos</span>
-  </div>
-  <a href="../algabo/" class="project-card-button">
-    Abrir Curso
-    <svg viewBox="0 0 24 24" fill="currentColor">
-      <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
-    </svg>
-  </a>
-</div>
-
 </div>
 
 ---

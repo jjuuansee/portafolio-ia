@@ -15,7 +15,7 @@ Esta guía documenta la estructura y mejores prácticas para crear ejercicios co
 Cada ejercicio debe seguir esta estructura:
 
 ```
-docs/ingenieria-de-datos/ejercicios/
+docs/semestre-4/ingenieria-de-datos/ejercicios/
 └── ut{N}-{nombre-descriptivo}/
     ├── {nombre-ejercicio}.md          # Reporte principal
     ├── {nombre-ejercicio}.ipynb       # Notebook con código
@@ -279,17 +279,17 @@ df = pd.read_csv("data.csv")
 
 Los siguientes ejercicios de UT1 sirven como referencia por su alta calidad:
 
-1. **UT1 - Iris Data**: [`ut1-iris-data/iris-eda.md`](../ut1-iris-data/iris-eda.md)
+1. **UT1 - Iris Data**: [`ut1-iris-data/iris-eda.md`](../semestre-4/ingenieria-de-datos/ejercicios/ut1-iris-data/iris-eda.md)
    - Estructura clara y concisa
    - Buen equilibrio entre código y explicación
    - Reflexión bien desarrollada
 
-2. **UT1 - Netflix Data**: [`ut1-netflix-data/netflix-data.md`](../ut1-netflix-data/netflix-data.md)
+2. **UT1 - Netflix Data**: [`ut1-netflix-data/netflix-data.md`](../semestre-4/ingenieria-de-datos/ejercicios/ut1-netflix-data/netflix-data.md)
    - Excelente uso de visualizaciones
    - Análisis de calidad de datos bien documentado
    - Insights de negocio claros
 
-3. **UT1 - NYC Taxis**: [`ut1-nyc-taxis/practica_4.md`](../ut1-nyc-taxis/practica_4.md)
+3. **UT1 - NYC Taxis**: [`ut1-nyc-taxis/practica_4.md`](../semestre-4/ingenieria-de-datos/ejercicios/ut1-nyc-taxis/practica_4.md)
    - Buen manejo de múltiples fuentes de datos
    - Evidencias bien organizadas
    - Preguntas finales que sintetizan el aprendizaje

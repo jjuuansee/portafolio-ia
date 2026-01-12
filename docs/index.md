@@ -532,17 +532,17 @@ html {
   <div class="project-card">
     <h4>Machine Learning</h4>
     <p>Curso de Aprendizaje Automático con proyectos en regresión, clasificación y redes neuronales.</p>
-    <a href="machine-learning/">Ver proyecto →</a>
+    <a href="semestre-4/machine-learning/">Ver proyecto →</a>
   </div>
   <div class="project-card">
     <h4>Ingeniería de Datos</h4>
     <p>Feature Engineering, pipelines de datos y buenas prácticas en procesamiento de datos.</p>
-    <a href="ingenieria-de-datos/">Ver proyecto →</a>
+    <a href="semestre-4/ingenieria-de-datos/">Ver proyecto →</a>
   </div>
   <div class="project-card">
     <h4>Algoritmos Avanzados</h4>
     <p>Algoritmos de búsqueda, optimización y programación dinámica para resolución de problemas.</p>
-    <a href="algabo/">Ver proyecto →</a>
+    <a href="semestre-4/algabo/">Ver proyecto →</a>
   </div>
 </div>
 
