@@ -1,0 +1,18 @@
+<inventario>
+    <producto>
+        <nombre>Laptop</nombre>
+        <precio>1500.00</precio>
+    </producto>
+    <producto>
+        <nombre>Monitor</nombre>
+        <precio>300.00</precio>
+    </producto>
+    <producto>
+        <nombre>Teclado</nombre>
+        <precio>50.00</precio>
+    </producto>
+    <producto>
+        <nombre>Mouse</nombre>
+        <precio>25.00</precio>
+    </producto>
+</inventario>

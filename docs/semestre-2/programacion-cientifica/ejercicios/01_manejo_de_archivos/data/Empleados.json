@@ -1,0 +1,22 @@
+[
+  {
+    "nombre": "Juan Pérez",
+    "posición": "Desarrollador",
+    "salario": 55000
+  },
+  {
+    "nombre": "María González",
+    "posición": "Analista",
+    "salario": 48000
+  },
+  {
+    "nombre": "Pedro Sánchez",
+    "posición": "Gerente de Proyecto",
+    "salario": 75000
+  },
+  {
+    "nombre": "Ana López",
+    "posición": "Diseñadora",
+    "salario": 52000
+  }
+]

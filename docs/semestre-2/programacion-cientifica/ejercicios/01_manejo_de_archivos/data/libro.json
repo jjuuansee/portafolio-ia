@@ -1,0 +1,16 @@
+{
+    "Libro": [
+        {
+            "Nombre": "Fahrenheit 451",
+            "Autor": "Ray Bradbury",
+            "Publicacion": "1953",
+            "Tipo": "Novela"
+        },
+        {
+            "Nombre": "La divina comedia",
+            "Autor": "Dante Alighieri",
+            "Publicacion": "Desconocido",
+            "Tipo": "Poema"
+        }
+    ]
+}

@@ -1,0 +1,27 @@
+[
+    {
+        "NOMBRE": "Juan",
+        "EDAD": "15",
+        "GRADO": "10"
+    },
+    {
+        "NOMBRE": "María",
+        "EDAD": "14",
+        "GRADO": "9"
+    },
+    {
+        "NOMBRE": "Pedro",
+        "EDAD": "16",
+        "GRADO": "11"
+    },
+    {
+        "NOMBRE": "Ana",
+        "EDAD": "17",
+        "GRADO": "12"
+    },
+    {
+        "NOMBRE": "Carlos",
+        "EDAD": "15",
+        "GRADO": "10"
+    }
+]

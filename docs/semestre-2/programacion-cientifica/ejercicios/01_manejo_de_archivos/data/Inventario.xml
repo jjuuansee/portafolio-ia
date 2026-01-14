@@ -1,0 +1,22 @@
+<inventario>
+    <producto>
+        <nombre>Televisor</nombre>
+        <categoria>Electrónica</categoria>
+        <precio>400.00</precio>
+    </producto>
+    <producto>
+        <nombre>Lavadora</nombre>
+        <categoria>Electrodomésticos</categoria>
+        <precio>300.00</precio>
+    </producto>
+    <producto>
+        <nombre>Microondas</nombre>
+        <categoria>Electrodomésticos</categoria>
+        <precio>100.00</precio>
+    </producto>
+    <producto>
+        <nombre>Smartphone</nombre>
+        <categoria>Electrónica</categoria>
+        <precio>600.00</precio>
+    </producto>
+</inventario>
