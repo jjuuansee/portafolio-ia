@@ -1,0 +1,81 @@
+{
+    "busqueda": "Harry Potter",
+    "resultados": [
+        {
+            "titulo": "Harry Potter and the Philosopher's Stone",
+            "fecha_lanzamiento": "2001-11-16"
+        },
+        {
+            "titulo": "Harry Potter and the Half-Blood Prince",
+            "fecha_lanzamiento": "2009-07-15"
+        },
+        {
+            "titulo": "Harry Potter and the Goblet of Fire",
+            "fecha_lanzamiento": "2005-11-16"
+        },
+        {
+            "titulo": "Harry Potter and the Chamber of Secrets",
+            "fecha_lanzamiento": "2002-11-13"
+        },
+        {
+            "titulo": "Harry Potter and the Prisoner of Azkaban",
+            "fecha_lanzamiento": "2004-05-31"
+        },
+        {
+            "titulo": "Harry Potter and the Deathly Hallows: Part 2",
+            "fecha_lanzamiento": "2011-07-12"
+        },
+        {
+            "titulo": "Harry Potter and the Deathly Hallows: Part 1",
+            "fecha_lanzamiento": "2010-11-17"
+        },
+        {
+            "titulo": "Harry Potter and the Order of the Phoenix",
+            "fecha_lanzamiento": "2007-07-08"
+        },
+        {
+            "titulo": "Harry Potter 20th Anniversary: Return to Hogwarts",
+            "fecha_lanzamiento": "2022-01-01"
+        },
+        {
+            "titulo": "Harry Potter: A Spirit Conspiracy?",
+            "fecha_lanzamiento": "2005-09-22"
+        },
+        {
+            "titulo": "Harry Potter: Witchcraft Repackaged",
+            "fecha_lanzamiento": "2001-01-01"
+        },
+        {
+            "titulo": "Harry Potter: A History Of Magic",
+            "fecha_lanzamiento": "2017-10-28"
+        },
+        {
+            "titulo": "50 Greatest Harry Potter Moments",
+            "fecha_lanzamiento": "2011-07-27"
+        },
+        {
+            "titulo": "The Magic Touch of Harry Potter",
+            "fecha_lanzamiento": "2004-06-11"
+        },
+        {
+            "titulo": "Daniel Radcliffe: Being Harry Potter",
+            "fecha_lanzamiento": "2012-10-10"
+        },
+        {
+            "titulo": "Harry Potter : les secrets du ph\u00e9nom\u00e8ne",
+            "fecha_lanzamiento": "2023-04-26"
+        },
+        {
+            "titulo": "Harry Potter: The Making of Diagon Alley",
+            "fecha_lanzamiento": "2014-06-30"
+        },
+        {
+            "titulo": "Harry Potter: Fireplace",
+            "fecha_lanzamiento": "2022-12-25"
+        },
+        {
+            "titulo": "Discovering the Real World of Harry Potter",
+            "fecha_lanzamiento": "2001-12-10"
+        }
+    ]
+}

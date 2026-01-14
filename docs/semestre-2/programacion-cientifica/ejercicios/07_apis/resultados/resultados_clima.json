@@ -1,0 +1,51 @@
+{
+    "resultados": [
+        {
+            "Montevideo": {
+                "descripcion": "few clouds",
+                "temperatura": 26.73
+            }
+        },
+        {
+            "Buenos Aires": {
+                "descripcion": "clear sky",
+                "temperatura": 28.42
+            }
+        },
+        {
+            "Madrid": {
+                "descripcion": "broken clouds",
+                "temperatura": 8.95
+            }
+        },
+        {
+            "London": {
+                "descripcion": "scattered clouds",
+                "temperatura": 6.74
+            }
+        },
+        {
+            "Paris": {
+                "descripcion": "clear sky",
+                "temperatura": 12.29
+            }
+        },
+        {
+            "Tokyo": {
+                "descripcion": "clear sky",
+                "temperatura": 5.64
+            }
+        },
+        {
+            "New York": {
+                "descripcion": "few clouds",
+                "temperatura": 5.73
+            }
+        }
+    ],
+    "temperatura_promedio": 13.5,
+    "descripcion_mas_frecuente": {
+        "descripcion": "clear sky",
+        "ocurrencias": 3
+    }
+}
